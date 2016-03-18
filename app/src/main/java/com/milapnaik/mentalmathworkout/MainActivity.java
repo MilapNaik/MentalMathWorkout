@@ -56,4 +56,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    /** Called when the user clicks the Math Test button */
+    public void MathTest(View view) {
+        Intent intent = new Intent(this, MathTestActivity.class);
+        startActivity(intent);
+    }
 }

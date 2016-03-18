@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,7 +25,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/edit_message"
         android:inputType="number"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/second_number"
+        android:layout_toEndOf="@+id/second_number" />
 
     <Button
         android:layout_weight="1"
@@ -33,6 +35,29 @@
         android:layout_height="wrap_content"
         android:text="@string/button_send"
         android:onClick="sendMessage"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/MentalMathWorkoutLogo" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Math Test"
+        android:onClick="MathTest"
+        android:id="@+id/button2"
+        android:layout_marginTop="93dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+
+</RelativeLayout>
