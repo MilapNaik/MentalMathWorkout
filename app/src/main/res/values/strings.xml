@@ -4,5 +4,9 @@
     <string name="edit_message">Enter a number.</string>
     <string name="button_send">Send Now</string>
     <string name="title_activity_display_message">My Message</string>
+    <string name="math_test">Math Test</string>
+    <string name="logo">Logo</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
 </resources>
 
