@@ -13,8 +13,8 @@ public class TableData {
 
     public static abstract class TableInfo implements BaseColumns{
 
-        public final String PROBLEM = "PROBLEM";
-        public final String ANSWER = "ANSWER";
+        public static final String PROBLEM = "PROBLEM";
+        public static final String ANSWER = "ANSWER";
         public static final String DATABASE_NAME = "PROBLEM_SETS";
         public static final String TABLE_NAME = "TRADER_PROBLEM_SET";
 
