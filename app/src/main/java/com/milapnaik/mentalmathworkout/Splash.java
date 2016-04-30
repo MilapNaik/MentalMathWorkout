@@ -1,5 +1,6 @@
 package com.milapnaik.mentalmathworkout;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.AnimationUtils;
@@ -17,8 +18,8 @@ public class Splash extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //final ImageView splash = (ImageView) findViewById(R.id.imageView);
-        //final Animation fade = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
+        final ImageView splash = (ImageView) findViewById(R.id.imageView);
+        final Animation fade = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
 
         Thread timerThread = new Thread(){
             public void run(){
@@ -27,6 +28,7 @@ public class Splash extends AppCompatActivity{
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
+                    //splash.startAnimation(fade);
                     Intent intent = new Intent(Splash.this, MainActivity.class);
                     startActivity(intent);
                 }

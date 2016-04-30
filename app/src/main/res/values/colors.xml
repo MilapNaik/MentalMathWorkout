@@ -6,4 +6,6 @@
     <color name="primary_material_light">#ffffff</color>
     <color name="background_material_light">#ffffff</color>
     <color name="background_material_dark">#000000</color>
+    <color name="background_dark">#000000</color>
+    <color name="legacy_primary">#fffcfc</color>
 </resources>
