@@ -1,6 +1,5 @@
 package com.milapnaik.mentalmathworkout;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,13 +9,9 @@ import android.widget.TextView;
 import android.graphics.Color;
 import android.widget.Toast;
 import android.widget.Button;
-import android.view.View;
-import android.content.Context;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.BufferedReader;
-import java.io.Reader;
 import java.io.IOException;
 
 /**
@@ -24,69 +19,74 @@ import java.io.IOException;
  */
 public class MathTestActivity extends AppCompatActivity {
 
-    private Context ctx;
-
-    public MathTestActivity(Context context) {
-        this.ctx = context;
-    }
-
+    int i = 0;
+    int correctcount = 0;
+    int n = 20; /*How many rows this test*/
+    String[] mathTest = new String[40];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mathtest);
 
-        TextView mathProblem = (TextView) findViewById(R.id.mathProblem);
+        final TextView mathProblem = (TextView) findViewById(R.id.mathProblem);
         final EditText mathAnswer = (EditText) findViewById(R.id.mathAnswer);
 
-        mathProblem.setTextSize(40);
+        //Styling for the question text
+        mathProblem.setTextSize(30);
         mathProblem.setTextColor(Color.rgb(0, 0, 0));
-        //String Problem1 = "29153 + 9";
-        //final int correctAnswer1 = 29153 + 9;
-        //mathProblem.setText(Problem1);
 
-        File file = new File("raw/mediummath.txt");
-        String readFile = "raw/mediummath.txt";
-        AssetManager am = ctx.getAssets();
+
+        //Try to read the problem and answers text file
         try {
-            InputStream is = am.open(readFile);
+            InputStream is = this.getResources().openRawResource(R.raw.mediummath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
 
-            while ((line = reader.readLine()) != null)
-                    mathProblem.setText(line);
+            int n = 20; /*How many rows this test has*/
+            /*read in file to array*/
+            for (i = 0; i < n; i=i+2) {
+                if ((line = reader.readLine()) != null)
+                    mathTest[i] = line; //Enter in problem
+                if ((line = reader.readLine()) != null)
+                    mathTest[i+1] = line; //Enter in solution
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        //return mLines;
+        i = 0;
 
-
+        mathProblem.setText(mathTest[0]);
 
         Button enterButton = (Button) findViewById(R.id.enterButton);
         enterButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
                 public void onClick(View view) {
-                    int correctcount = 0;
-                    int answer = Integer.parseInt(mathAnswer.getText().toString());
-                    /*if (answer == correctAnswer1){
-                        Toast.makeText(MathTestActivity.this,
-                                        R.string.correct_toast,
-                                        Toast.LENGTH_SHORT).show();
 
-                        correctcount++;
-                    }
-                    else{
-                        Toast.makeText(MathTestActivity.this,
-                                R.string.incorrect_toast,
-                                Toast.LENGTH_SHORT).show();
-                    }*/
+
+                    String answer = mathAnswer.toString() ;
+                    String correctAnswer = mathTest[i+1];
+
+
+                        if (answer.equals(correctAnswer)){
+                            correctcount++;
+                            Toast.makeText(MathTestActivity.this,
+                                            correctcount,
+                                            Toast.LENGTH_SHORT).show();
+
+                        }
+                        else{
+                            Toast.makeText(MathTestActivity.this,
+                                            correctAnswer,
+                                            Toast.LENGTH_SHORT).show();
+
+                        }
+                        i = i + 2;
+                        mathProblem.setText(mathTest[i]);
             }
         });
-
-
-
-
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.mtestcontent);
-
     }
 }

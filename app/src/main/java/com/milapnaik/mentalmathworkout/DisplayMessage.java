@@ -34,8 +34,8 @@ public class DisplayMessage extends AppCompatActivity {
         textView.setTextSize(40);
         textView.setText(message);
 
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.content);
-        layout.addView(textView);
+        /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.content);
+        layout.addView(textView);*/
 
     }
 }
