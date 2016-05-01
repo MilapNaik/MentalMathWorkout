@@ -1,5 +1,6 @@
 package com.milapnaik.mentalmathworkout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,7 +19,7 @@ import android.os.SystemClock;
 /**
  * Created by MilapNaik on 3/18/16.
  */
-public class MathTestActivity extends AppCompatActivity {
+public class MathTest extends AppCompatActivity {
 
     int i = 0;
     int correctcount = 0;
@@ -26,6 +27,7 @@ public class MathTestActivity extends AppCompatActivity {
     String[] mathTest = new String[40];
     long mStartTime, mEndTime, mTotalTime;
     String answer;
+    public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,11 @@ public class MathTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mathtest);
 
         final TextView mathProblem = (TextView) findViewById(R.id.mathProblem);
-        final EditText mathAnswer = (EditText) findViewById(R.id.mathAnswer);
+        final TextView mathAnswer = (TextView) findViewById(R.id.mathAnswer);
 
         //Styling for the question text
         mathProblem.setTextSize(20);
         mathProblem.setTextColor(Color.rgb(0, 0, 0));
-
-
 
 
         //Try to read the problem and answers text file
@@ -49,15 +49,15 @@ public class MathTestActivity extends AppCompatActivity {
             String line;
 
             /*read in file to array*/
-            for (i = 0; i < n; i=i+2) {
+            for (i = 0; i < n; i = i + 2) {
                 //Question[] mediumTest = new Question[n];
                 if ((line = reader.readLine()) != null)
                     mathTest[i] = line; //Enter in problem
-                    //mediumTest[i].problem = line;
+                //mediumTest[i].problem = line;
 
                 if ((line = reader.readLine()) != null)
-                    mathTest[i+1] = line; //Enter in solution
-                    //mediumTest[i+1].answer = line;
+                    mathTest[i + 1] = line; //Enter in solution
+                //mediumTest[i+1].answer = line;
             }
 
 
@@ -186,48 +186,53 @@ public class MathTestActivity extends AppCompatActivity {
         enterButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
-                public void onClick(View view) {
+            public void onClick(View view) {
 
 
-                    answer = mathAnswer.getText().toString();
-                    String correctAnswer = mathTest[i+1];
+                answer = mathAnswer.getText().toString();
+                String correctAnswer = mathTest[i + 1];
 
-                    if (answer.equals(correctAnswer)){
-                        correctcount++;
-                        mathAnswer.setText("");
+                if (answer.equals(correctAnswer)) {
+                    correctcount++;
+                    mathAnswer.setText("");
 
-                        Toast.makeText(MathTestActivity.this,
-                                        R.string.correct_toast,
-                                        Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MathTest.this,
+                            R.string.correct_toast,
+                            Toast.LENGTH_SHORT).show();
 
-                    }
-                    else{
-                        Toast.makeText(MathTestActivity.this,
-                                        correctAnswer,
-                                        Toast.LENGTH_SHORT).show();
-                        mathAnswer.setText("");
+                } else {
+                    Toast.makeText(MathTest.this,
+                            correctAnswer,
+                            Toast.LENGTH_SHORT).show();
+                    mathAnswer.setText("");
 
-                    }
-                    i = i + 2;
-                    mathProblem.setText(mathTest[i]);
+                }
+                i = i + 2;
+                mathProblem.setText(mathTest[i]);
 
-                    if (i == n){
-                        mathProblem.setTextSize(15);
-                        mEndTime = System.currentTimeMillis();
-                        mTotalTime = mEndTime - mStartTime;
-                        int seconds = (int) (mTotalTime / 1000);
-                        int minutes = seconds / 60;
-                        seconds     = seconds % 60;
-                        int millis = (int) mTotalTime % 1000;
-                        String sectime = Integer.toString(seconds);
-                        String milsectime = Integer.toString(millis);
-                        String time = sectime + "." + milsectime;
-                        mathProblem.setText(time);
-                    }
+                if (i == n) {
+                    mathProblem.setTextSize(15);
+                    mEndTime = System.currentTimeMillis();
+                    mTotalTime = mEndTime - mStartTime;
+                    int seconds = (int) (mTotalTime / 1000);
+                    int minutes = seconds / 60;
+                    seconds = seconds % 60;
+                    int millis = (int) mTotalTime % 1000;
+                    String sectime = Integer.toString(seconds);
+                    String milsectime = Integer.toString(millis);
+                    String time = sectime + "." + milsectime;
+                    mathProblem.setText(time);
+                    Intent intent = new Intent(MathTest.this, FinishTest.class);
+                    String count = Integer.toString(correctcount);
+                    intent.putExtra(NUM_CORRECT, count);
+                    startActivity(intent);
+
+                }
 
             }
 
         });
-
     }
+
+
 }

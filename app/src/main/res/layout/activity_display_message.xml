@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/content">
+    tools:context=".DisplayMessage"
+    android:id="@+id/content"
+    android:background="#bcb8b8">
 
 
 
