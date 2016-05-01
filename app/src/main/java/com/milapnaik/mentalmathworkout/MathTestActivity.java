@@ -25,6 +25,7 @@ public class MathTestActivity extends AppCompatActivity {
     int n = 6; /*How many rows this test*/
     String[] mathTest = new String[40];
     long mStartTime, mEndTime, mTotalTime;
+    String answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,118 @@ public class MathTestActivity extends AppCompatActivity {
         mathProblem.setText(mathTest[0]);
         mStartTime = System.currentTimeMillis();
 
+        Button n1Button = (Button) findViewById(R.id.n1);
+        n1Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "1");
+            }
+
+        });
+        Button n2Button = (Button) findViewById(R.id.n2);
+        n2Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "2");
+            }
+
+        });
+        Button n3Button = (Button) findViewById(R.id.n3);
+        n3Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "3");
+            }
+
+        });
+        Button n4Button = (Button) findViewById(R.id.n4);
+        n4Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "4");
+            }
+
+        });
+        Button n5Button = (Button) findViewById(R.id.n5);
+        n5Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "5");
+            }
+
+        });
+        Button n6Button = (Button) findViewById(R.id.n6);
+        n6Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "6");
+            }
+
+        });
+        Button n7Button = (Button) findViewById(R.id.n7);
+        n7Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "7");
+            }
+
+        });
+        Button n8Button = (Button) findViewById(R.id.n8);
+        n8Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "8");
+            }
+
+        });
+        Button n9Button = (Button) findViewById(R.id.n9);
+        n9Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "9");
+            }
+
+        });
+        Button nminusButton = (Button) findViewById(R.id.nminus);
+        nminusButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "-");
+            }
+
+        });
+        Button ndecimalButton = (Button) findViewById(R.id.ndecimal);
+        ndecimalButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + ".");
+            }
+
+        });
+
+
         Button enterButton = (Button) findViewById(R.id.enterButton);
         enterButton.setOnClickListener(new View.OnClickListener() {
 
@@ -76,11 +189,12 @@ public class MathTestActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
 
-                    String answer = mathAnswer.getText().toString();
+                    answer = mathAnswer.getText().toString();
                     String correctAnswer = mathTest[i+1];
 
                     if (answer.equals(correctAnswer)){
                         correctcount++;
+                        mathAnswer.setText("");
 
                         Toast.makeText(MathTestActivity.this,
                                         R.string.correct_toast,
@@ -91,6 +205,7 @@ public class MathTestActivity extends AppCompatActivity {
                         Toast.makeText(MathTestActivity.this,
                                         correctAnswer,
                                         Toast.LENGTH_SHORT).show();
+                        mathAnswer.setText("");
 
                     }
                     i = i + 2;

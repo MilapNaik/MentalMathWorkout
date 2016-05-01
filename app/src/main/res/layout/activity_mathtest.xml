@@ -39,17 +39,115 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/mathAnswer"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/mathProblem"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="125dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter"
         android:id="@+id/enterButton"
+
+        android:layout_below="@+id/ndecimal"
+        android:layout_toLeftOf="@+id/ndecimal"
+        android:layout_toStartOf="@+id/ndecimal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:id="@+id/n1"
         android:layout_below="@+id/mathAnswer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="85dp" />
+        android:layout_alignLeft="@+id/n4"
+        android:layout_alignStart="@+id/n4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:id="@+id/n2"
+        android:layout_below="@+id/mathAnswer"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:id="@+id/n3"
+        android:layout_below="@+id/mathAnswer"
+        android:layout_toRightOf="@+id/n5"
+        android:layout_toEndOf="@+id/n5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:id="@+id/n4"
+        android:layout_below="@+id/n2"
+        android:layout_toLeftOf="@+id/n2"
+        android:layout_toStartOf="@+id/n2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:id="@+id/n5"
+        android:layout_below="@+id/n2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        android:id="@+id/n6"
+        android:layout_below="@+id/n3"
+        android:layout_toRightOf="@+id/n2"
+        android:layout_toEndOf="@+id/n2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7"
+        android:id="@+id/n7"
+        android:layout_below="@+id/n4"
+        android:layout_alignLeft="@+id/n4"
+        android:layout_alignStart="@+id/n4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8"
+        android:id="@+id/n8"
+        android:layout_below="@+id/n5"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9"
+        android:id="@+id/n9"
+        android:layout_below="@+id/n6"
+        android:layout_toRightOf="@+id/n5"
+        android:layout_toEndOf="@+id/n5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/nminus"
+        android:layout_below="@+id/n7"
+        android:layout_alignLeft="@+id/n7"
+        android:layout_alignStart="@+id/n7" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        android:id="@+id/ndecimal"
+        android:layout_below="@+id/n9"
+        android:layout_toRightOf="@+id/n8"
+        android:layout_toEndOf="@+id/n8" />
 
 
 </RelativeLayout>
