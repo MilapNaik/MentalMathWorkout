@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user clicks the Math Test button */
     public void MathTest(View view) {
-        Intent intent = new Intent(this, MathTest.class);
+        Intent intent = new Intent(this, EasyCountDown.class);
         startActivity(intent);
     }
 }
