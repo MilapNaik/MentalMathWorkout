@@ -1,6 +1,7 @@
 package com.milapnaik.mentalmathworkout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
@@ -10,17 +11,41 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationSet;
+import android.os.CountDownTimer;
+import android.widget.TextView;
 
 /**
  * Created by MilapNaik on 5/2/16.
  */
 public class EasyCountDown extends AppCompatActivity{
+    CountDownTimer countDownTimer;
+    TextView timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecd);
-        final ImageView one = (ImageView) findViewById(R.id.imageone);
+        timer = (TextView) findViewById(R.id.timer);
+        timer.setTextSize(100);
+        timer.setTextColor(Color.rgb(0, 0, 0));
+
+
+        countDownTimer = new CountDownTimer(4000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timer.setText(String.valueOf((int) millisUntilFinished / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent = new Intent(EasyCountDown.this, MathTest.class);
+                startActivity(intent); //Start new activity
+            }
+        }.start();
+
+
+
+        /*final ImageView one = (ImageView) findViewById(R.id.imageone);
         ImageView two = (ImageView) findViewById(R.id.imagetwo);
         ImageView three = (ImageView) findViewById(R.id.imagethree);
         final Animation fadeout = AnimationUtils.loadAnimation(getBaseContext(), R.anim.abc_fade_out);
@@ -40,7 +65,8 @@ public class EasyCountDown extends AppCompatActivity{
         animation.addAnimation(fadeOut);
         three.setAnimation(animation);
 
-        /*Animate number two*/
+
+        /*Animate number two
         Animation fadeIn2 = new AlphaAnimation(0, 1);
         fadeIn2.setInterpolator(new DecelerateInterpolator()); //add this
         fadeIn2.setStartOffset(3000);
@@ -78,7 +104,7 @@ public class EasyCountDown extends AppCompatActivity{
     protected void onPause() {
         super.onPause();
         finish();
+    }*/
+
     }
-
-
 }

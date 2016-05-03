@@ -5,7 +5,7 @@
     tools:context=".EasyCountDown"
     android:background="#bcb8b8">
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageone"
@@ -32,7 +32,14 @@
         android:background="#bcb8b8"
         android:layout_alignTop="@+id/imageone"
         android:layout_alignRight="@+id/imagetwo"
-        android:layout_alignEnd="@+id/imagetwo" />
+        android:layout_alignEnd="@+id/imagetwo" />-->
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/timer"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
