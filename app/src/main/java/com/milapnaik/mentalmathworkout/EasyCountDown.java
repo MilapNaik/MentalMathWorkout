@@ -39,7 +39,7 @@ public class EasyCountDown extends AppCompatActivity{
             @Override
             public void onFinish() {
                 Intent intent = new Intent(EasyCountDown.this, MathTest.class);
-                startActivity(intent); //Start new activity
+                startActivity(intent); //Start test
             }
         }.start();
 

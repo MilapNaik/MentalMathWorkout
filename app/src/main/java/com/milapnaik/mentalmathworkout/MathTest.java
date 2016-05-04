@@ -26,7 +26,7 @@ public class MathTest extends AppCompatActivity {
 
     int i = 0;
     int correctcount = 0;
-    int n = 6; /*How many rows this test*/
+    int n = 40; /*How many rows this test*/
     String[] mathTest = new String[40];
     long mStartTime, mEndTime, mTotalTime;
     String answer;
