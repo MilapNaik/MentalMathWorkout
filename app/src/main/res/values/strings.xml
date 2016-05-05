@@ -8,6 +8,8 @@
     <string name="logo">Logo</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
-    <string name="about">Created by:\nMilap Naik</string>
+    <string name="about">Created by:</string>
+    <string name="name">Milap Naik</string>
+    <string name="testsfrom">Tests from:</string>
 </resources>
 

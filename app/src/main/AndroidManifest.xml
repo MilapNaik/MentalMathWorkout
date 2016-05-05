@@ -29,8 +29,16 @@
         </activity>
 
         <activity
-            android:name=".DisplayMessage"
-            android:label="@string/title_activity_display_message"
+            android:name=".Info"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".Leaderboard"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -65,14 +73,6 @@
                 android:value="com.milapnaik.mentalmathworkout.MainActivity" />
         </activity>
 
-        <activity
-            android:name=".Info"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
-        </activity>
 
     </application>
 

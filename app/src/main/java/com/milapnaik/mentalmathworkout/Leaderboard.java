@@ -10,17 +10,11 @@ import android.text.Html;
 /**
  * Created by MilapNaik on 5/5/16.
  */
-public class Info extends AppCompatActivity {
+public class Leaderboard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        TextView textView =(TextView)findViewById(R.id.TTlink);
-        textView.setTextSize(32);
-        textView.setClickable(true);
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
-        String text = "<a href='http://www.tradertest.org'> tradertest.org </a>";
-        textView.setText(Html.fromHtml(text));
     }
 }
