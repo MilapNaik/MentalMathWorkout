@@ -44,23 +44,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called when the user clicks the Send button */
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessage.class);
-        EditText editText = (EditText) findViewById(R.id.first_number);
-        EditText editText2 = (EditText) findViewById(R.id.second_number);
-
-        int firstnumber = Integer.parseInt(editText.getText().toString());
-        int secondnumber = Integer.parseInt(editText2.getText().toString());
-
-        String message = Integer.toString(firstnumber + secondnumber);
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
     /** Called when the user clicks the Math Test button */
     public void MathTest(View view) {
         Intent intent = new Intent(this, EasyCountDown.class);
+        startActivity(intent);
+    }
+
+    public void Info(View view) {
+        Intent intent = new Intent(this, Info.class);
         startActivity(intent);
     }
 }

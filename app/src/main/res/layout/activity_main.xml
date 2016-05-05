@@ -9,34 +9,6 @@
     tools:context="com.milapnaik.mentalmathworkout.MainActivity"
     android:background="#bcb8b8">
 
-    <EditText
-        android:id="@+id/second_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message"
-        android:inputType="number"
-        />
-
-    <EditText
-        android:id="@+id/first_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message"
-        android:inputType="number"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/second_number"
-        android:layout_toEndOf="@+id/second_number" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="sendMessage"
-        android:id="@+id/button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,10 +35,22 @@
         android:textSize="18sp"
 
         android:background="@drawable/buttonshape"/>
-        <!--android:shadowColor="#A8A8A8"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"-->
+    <!--android:shadowColor="#A8A8A8"
+   android:shadowDx="0"
+   android:shadowDy="0"
+   android:shadowRadius="5"-->
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Info"
+        android:id="@+id/info"
+        android:background="@drawable/info"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
 
 </RelativeLayout>
