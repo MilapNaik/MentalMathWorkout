@@ -8,4 +8,8 @@
     <color name="background_material_dark">#000000</color>
     <color name="background_dark">#000000</color>
     <color name="legacy_primary">#fffcfc</color>
+    <color name="orange">#FFA500</color>
+    <color name="blackish">#250404</color>
+    <color name="blackishclick">#210303</color>
+    <color name="background">#FFEACE</color>
 </resources>

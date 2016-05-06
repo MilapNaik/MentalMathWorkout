@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user clicks the Math Test button */
     public void MathTest(View view) {
-        Intent intent = new Intent(this, CountDown.class);
+        Intent intent = new Intent(this, PracticeOrTest.class);
         String test = "Mathtest";
         intent.putExtra(TEST_TYPE, test);
         startActivity(intent);
     }
 
     public void SeqTest(View view) {
-        Intent intent = new Intent(this, CountDown.class);
+        Intent intent = new Intent(this, PracticeOrTest.class);
         String test = "Seqtest";
         intent.putExtra(TEST_TYPE, test);
         startActivity(intent);

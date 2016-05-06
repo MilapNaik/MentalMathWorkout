@@ -11,6 +11,7 @@ import android.widget.TextView;
  * Created by MilapNaik on 5/2/16.
  */
 public class CountDown extends AppCompatActivity{
+    public final static String DIFFICULTY = "com.milapnaik.mentalmathworkout.MESSAGE";
     CountDownTimer countDownTimer;
     TextView timer;
 
@@ -19,9 +20,11 @@ public class CountDown extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cd);
         Intent intent = getIntent();
-        final String test = intent.getStringExtra(MainActivity.TEST_TYPE);
+        final String test = intent.getStringExtra(PracticeOrTest.TEST_TYPE);
+        final String difficulty = intent.getStringExtra(PracticeOrTest.DIFFICULTY);
 
         timer = (TextView) findViewById(R.id.timer);
+
         timer.setTextSize(100);
         timer.setTextColor(Color.rgb(0, 0, 0));
 
@@ -38,10 +41,12 @@ public class CountDown extends AppCompatActivity{
             public void onFinish() {
                 if (test.equals("Seqtest")) {
                     Intent intent = new Intent(CountDown.this, SeqTest.class);
+                    intent.putExtra(DIFFICULTY, difficulty);
                     startActivity(intent); //Start Sequence test
                 }
                 else if (test.equals("Mathtest")) {
                     Intent intent = new Intent(CountDown.this, MathTest.class);
+                    intent.putExtra(DIFFICULTY, difficulty);
                     startActivity(intent); //Start Math test
                 }
                 else{

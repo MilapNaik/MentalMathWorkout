@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".DisplayMessage"
     android:id="@+id/content"
-    android:background="#bcb8b8">
+    android:background="@color/background">
 
 
 

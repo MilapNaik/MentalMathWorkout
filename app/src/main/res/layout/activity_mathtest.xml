@@ -8,28 +8,15 @@
     android:fitsSystemWindows="true"
     tools:context=".MathTest"
     android:id="@+id/mtestcontent"
-    android:background="#bcb8b8">
-
-    <!--<android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>/>-->
+    android:background="@color/background">
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Text"
         android:id="@+id/mathProblem"
+        android:textColor="#FFF"
+        android:background="@color/blackish"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp" />
@@ -37,126 +24,168 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:textColor="#000000"
         android:ems="15"
         android:id="@+id/mathAnswer"
         android:layout_marginTop="60dp"
         android:layout_below="@+id/mathProblem"
         android:textAlignment="center"
-        android:layout_alignLeft="@+id/n1"
-        android:layout_alignStart="@+id/n1"
-        android:layout_alignRight="@+id/n3"
-        android:layout_alignEnd="@+id/n3" />
+ />
 
-    <Button
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_centerVertical="true" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"
+            android:id="@+id/n1"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+            android:layout_below="@+id/mathAnswer"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"
+            android:id="@+id/n2"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+            android:layout_below="@+id/mathAnswer"
+            android:layout_marginTop="25dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"
+            android:id="@+id/n3"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+            android:layout_below="@+id/mathAnswer"
+            android:layout_marginTop="25dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_below="@id/LinearLayout1" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+            android:id="@+id/n4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+            android:id="@+id/n5"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="6"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+            android:id="@+id/n6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_below="@id/LinearLayout2" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="7"
+            android:id="@+id/n7"
+            android:textColor="#FFF"
+            android:background="@color/orange" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="8"
+            android:id="@+id/n8"
+            android:textColor="#FFF"
+            android:background="@color/orange"
+/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="9"
+            android:id="@+id/n9"
+            android:textColor="#FFF"
+            android:background="@color/orange" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_below="@id/LinearLayout3" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:id="@+id/nminus"
+            android:textColor="#FFF"
+            android:background="@color/orange" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Enter"
+            android:id="@+id/enterButton"
+            android:textColor="#FFF"
+            android:background="@color/blackish"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="."
+            android:id="@+id/ndecimal"
+            android:textColor="#FFF"
+            android:background="@color/orange" />
+    </LinearLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter"
-        android:id="@+id/enterButton"
-
-        android:layout_below="@+id/ndecimal"
-        android:layout_toLeftOf="@+id/ndecimal"
-        android:layout_toStartOf="@+id/ndecimal" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:id="@+id/n1"
-        android:layout_below="@+id/mathAnswer"
-        android:layout_alignLeft="@+id/n4"
-        android:layout_alignStart="@+id/n4"
-        android:layout_marginTop="25dp"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        android:id="@+id/n2"
-        android:layout_below="@+id/mathAnswer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        android:id="@+id/n3"
-        android:layout_below="@+id/mathAnswer"
-        android:layout_toRightOf="@+id/n5"
-        android:layout_toEndOf="@+id/n5"
-        android:layout_marginTop="25dp"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4"
-        android:id="@+id/n4"
-        android:layout_below="@+id/n2"
-        android:layout_toLeftOf="@+id/n2"
-        android:layout_toStartOf="@+id/n2" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5"
-        android:id="@+id/n5"
-        android:layout_below="@+id/n2"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6"
-        android:id="@+id/n6"
-        android:layout_below="@+id/n3"
-        android:layout_toRightOf="@+id/n2"
-        android:layout_toEndOf="@+id/n2" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7"
-        android:id="@+id/n7"
-        android:layout_below="@+id/n4"
-        android:layout_alignLeft="@+id/n4"
-        android:layout_alignStart="@+id/n4" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="8"
-        android:id="@+id/n8"
-        android:layout_below="@+id/n5"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="9"
-        android:id="@+id/n9"
-        android:layout_below="@+id/n6"
-        android:layout_toRightOf="@+id/n5"
-        android:layout_toEndOf="@+id/n5" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        android:id="@+id/nminus"
-        android:layout_below="@+id/n7"
-        android:layout_alignLeft="@+id/n7"
-        android:layout_alignStart="@+id/n7" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="."
-        android:id="@+id/ndecimal"
-        android:layout_below="@+id/n9"
-        android:layout_toRightOf="@+id/n8"
-        android:layout_toEndOf="@+id/n8" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/qcount"
+        android:textSize="5sp"
+        android:textColor="#000"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

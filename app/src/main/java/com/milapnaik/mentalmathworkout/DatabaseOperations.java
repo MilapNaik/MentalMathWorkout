@@ -22,14 +22,13 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     public DatabaseOperations(Context context){
         super(context, TableInfo.DATABASE_NAME, null, database_version);
-        Log.d("Database Operations", "Database created");
+
         this.ctx = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sdb){
         sdb.execSQL(CREATE_QUERY);
-        Log.d("Database Operations", "Table created");
 
         //Insert problems for problem set
 

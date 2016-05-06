@@ -42,10 +42,20 @@ public class MathTest extends AppCompatActivity {
 
         final TextView mathProblem = (TextView) findViewById(R.id.mathProblem);
         final TextView mathAnswer = (TextView) findViewById(R.id.mathAnswer);
+        final TextView qCount = (TextView) findViewById(R.id.qcount);
+
 
         //Styling for the question text
         mathProblem.setTextSize(20);
         mathProblem.setTextColor(Color.rgb(0, 0, 0));
+
+        Intent gintent = getIntent();
+        final String difficulty = gintent.getStringExtra(PracticeOrTest.DIFFICULTY);
+
+        if(difficulty.equals("Practice"))
+            n=20;
+        else if (difficulty.equals("Test"))
+            n=160;
 
 
         //Try to read the problem and answers text file
@@ -74,6 +84,7 @@ public class MathTest extends AppCompatActivity {
         i = 0;
 
         mathProblem.setText(mathTest[0]);
+        qCount.setText("1/80");
         mStartTime = System.currentTimeMillis();
 
         Button n1Button = (Button) findViewById(R.id.n1);
@@ -215,6 +226,7 @@ public class MathTest extends AppCompatActivity {
                 }
                 i = i + 2;
                 mathProblem.setText(mathTest[i]);
+                qCount.setText(i+1 + "/80");
 
                 if (i <= n) {
                     mathProblem.setTextSize(15);

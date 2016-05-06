@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".FinishTest"
     android:id="@+id/ftestcontent"
-    android:background="#bcb8b8">
+    android:background="@color/background">
 
 
     <TextView

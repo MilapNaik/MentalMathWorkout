@@ -56,6 +56,15 @@
         </activity>
 
         <activity
+            android:name=".PracticeOrTest"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+        </activity>
+
+        <activity
             android:name=".MathTest"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
