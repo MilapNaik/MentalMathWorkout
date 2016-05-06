@@ -22,17 +22,15 @@
         android:text="@string/math_test"
         android:onClick="MathTest"
         android:id="@+id/math_test"
-        android:layout_marginTop="93dp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
         android:clickable="false"
         android:layout_width="126dp"
         android:layout_height="44dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
 
-        android:background="@drawable/buttonshape"/>
+        android:background="@drawable/buttonshape"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="@string/seq_test"

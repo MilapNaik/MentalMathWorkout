@@ -6,6 +6,7 @@
     <string name="title_activity_display_message">My Message</string>
     <string name="math_test">Math Test</string>
     <string name="seq_test">Sequence Test</string>
+    <string name="perc_test">Percentage Test</string>
     <string name="logo">Logo</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>

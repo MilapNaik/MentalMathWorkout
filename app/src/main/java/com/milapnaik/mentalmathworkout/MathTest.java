@@ -18,6 +18,9 @@ import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import android.os.SystemClock;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by MilapNaik on 3/18/16.
@@ -213,7 +216,7 @@ public class MathTest extends AppCompatActivity {
                 i = i + 2;
                 mathProblem.setText(mathTest[i]);
 
-                if (i == n) {
+                if (i <= n) {
                     mathProblem.setTextSize(15);
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
