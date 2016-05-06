@@ -13,6 +13,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.milapnaik.mentalmathworkout.MESSAGE";
+    public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,21 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user clicks the Math Test button */
     public void MathTest(View view) {
-        Intent intent = new Intent(this, EasyCountDown.class);
+        Intent intent = new Intent(this, CountDown.class);
+        String test = "Mathtest";
+        intent.putExtra(TEST_TYPE, test);
+        startActivity(intent);
+    }
+
+    public void SeqTest(View view) {
+        Intent intent = new Intent(this, CountDown.class);
+        String test = "Seqtest";
+        intent.putExtra(TEST_TYPE, test);
+        startActivity(intent);
+    }
+
+    public void Leaderboard(View view) {
+        Intent intent = new Intent(this, Leaderboard.class);
         startActivity(intent);
     }
 

@@ -51,7 +51,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         cv.put(TableInfo.ANSWER, answer);
 
         long k = SQ.insert(TableInfo.TABLE_NAME, null, cv);
-        Log.d("Database Operations", "One row inserted");
+        //Log.d("Database Operations", "One row inserted");
 
     }
 }

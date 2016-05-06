@@ -4,30 +4,28 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
 /**
  * Created by MilapNaik on 5/2/16.
  */
-public class EasyCountDown extends AppCompatActivity{
+public class CountDown extends AppCompatActivity{
     CountDownTimer countDownTimer;
     TextView timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ecd);
+        setContentView(R.layout.activity_cd);
+        Intent intent = getIntent();
+        final String test = intent.getStringExtra(MainActivity.TEST_TYPE);
+
         timer = (TextView) findViewById(R.id.timer);
         timer.setTextSize(100);
         timer.setTextColor(Color.rgb(0, 0, 0));
+
+
 
 
         countDownTimer = new CountDownTimer(4000, 1000) {
@@ -38,8 +36,19 @@ public class EasyCountDown extends AppCompatActivity{
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(EasyCountDown.this, MathTest.class);
-                startActivity(intent); //Start test
+                if (test.equals("Seqtest")) {
+                    Intent intent = new Intent(CountDown.this, SeqTest.class);
+                    startActivity(intent); //Start Sequence test
+                }
+                else if (test.equals("Mathtest")) {
+                    Intent intent = new Intent(CountDown.this, MathTest.class);
+                    startActivity(intent); //Start Math test
+                }
+                else{
+                    Intent intent = new Intent(CountDown.this, MainActivity.class);
+                    startActivity(intent); //Go back to main activity
+                }
+                //timer.setText("GO");
             }
         }.start();
 

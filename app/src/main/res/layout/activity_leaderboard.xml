@@ -5,4 +5,15 @@
     tools:context=".Leaderboard"
     android:background="#bcb8b8">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Leaderboards"
+        android:textSize="32sp"
+        android:textColor="#000"
+        android:id="@+id/leaderboard"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
 </RelativeLayout>
