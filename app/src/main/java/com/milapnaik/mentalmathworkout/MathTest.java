@@ -28,6 +28,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MathTest extends AppCompatActivity {
 
     int i = 0;
+    int qnumber = 1;
     int correctcount = 0;
     int n = 40; /*How many rows this test*/
     String[] mathTest = new String[40];
@@ -46,8 +47,11 @@ public class MathTest extends AppCompatActivity {
 
 
         //Styling for the question text
-        mathProblem.setTextSize(20);
-        mathProblem.setTextColor(Color.rgb(0, 0, 0));
+        mathProblem.setTextSize(25);
+        mathProblem.setTextColor(Color.WHITE);
+        mathAnswer.setTextSize(25);
+        mathAnswer.setTextColor(Color.WHITE);
+
 
         Intent gintent = getIntent();
         final String difficulty = gintent.getStringExtra(PracticeOrTest.DIFFICULTY);
@@ -226,9 +230,10 @@ public class MathTest extends AppCompatActivity {
                 }
                 i = i + 2;
                 mathProblem.setText(mathTest[i]);
-                qCount.setText(i+1 + "/80");
+                qnumber= Math.round((i+1)/2);
+                qCount.setText(qnumber + "/80");
 
-                if (i <= n) {
+                if (i >= n) {
                     mathProblem.setTextSize(15);
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
