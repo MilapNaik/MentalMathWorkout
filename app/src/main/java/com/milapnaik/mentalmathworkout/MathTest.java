@@ -30,11 +30,13 @@ public class MathTest extends AppCompatActivity {
     int i = 0;
     int qnumber = 1;
     int correctcount = 0;
-    int n = 40; /*How many rows this test*/
-    String[] mathTest = new String[40];
+    int n = 20; /*How many rows this test*/
+    int qoutof=n/2;
+    String[] mathTest = new String[n+10];
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
+    public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class MathTest extends AppCompatActivity {
         final TextView qCount = (TextView) findViewById(R.id.qcount);
 
 
-        //Styling for the question text
+        //Styling for the question and answer text
         mathProblem.setTextSize(25);
         mathProblem.setTextColor(Color.WHITE);
         mathAnswer.setTextSize(25);
@@ -88,7 +90,8 @@ public class MathTest extends AppCompatActivity {
         i = 0;
 
         mathProblem.setText(mathTest[0]);
-        qCount.setText("1/80");
+        qnumber= (i+2)/2;
+        qCount.setText(qnumber+ "/" + qoutof);
         mStartTime = System.currentTimeMillis();
 
         Button n1Button = (Button) findViewById(R.id.n1);
@@ -181,6 +184,16 @@ public class MathTest extends AppCompatActivity {
             }
 
         });
+        Button n0Button = (Button) findViewById(R.id.n0);
+        n0Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText(answer + "0");
+            }
+
+        });
         Button nminusButton = (Button) findViewById(R.id.nminus);
         nminusButton.setOnClickListener(new View.OnClickListener() {
 
@@ -198,6 +211,16 @@ public class MathTest extends AppCompatActivity {
             public void onClick(View view) {
                 answer = mathAnswer.getText().toString();
                 mathAnswer.setText(answer + ".");
+            }
+
+        });
+        Button clearButton = (Button) findViewById(R.id.clear);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                answer = mathAnswer.getText().toString();
+                mathAnswer.setText("");
             }
 
         });
@@ -230,10 +253,11 @@ public class MathTest extends AppCompatActivity {
                 }
                 i = i + 2;
                 mathProblem.setText(mathTest[i]);
-                qnumber= Math.round((i+1)/2);
-                qCount.setText(qnumber + "/80");
+                qnumber= (i+2)/2;
 
-                if (i >= n) {
+                qCount.setText(qnumber + "/" + qoutof);
+
+                if (qnumber  > qoutof ) {
                     mathProblem.setTextSize(15);
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
@@ -244,14 +268,16 @@ public class MathTest extends AppCompatActivity {
                     String sectime = Integer.toString(seconds);
                     String milsectime = Integer.toString(millis);
                     String time = sectime + "." + milsectime;
-                    mathProblem.setText(time + " seconds");
+                    //mathProblem.setText(time + " seconds");
                     Intent intent = new Intent(MathTest.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
-                    intent.putExtra(NUM_CORRECT, count);
+
+                    Bundle extras = new Bundle();
+                    extras.putString("TIMER", time);
+                    extras.putString("NUM_CORRECT",count);
+                    intent.putExtras(extras);
                     startActivity(intent);
-
                 }
-
             }
 
         });

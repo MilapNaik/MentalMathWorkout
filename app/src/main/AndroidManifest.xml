@@ -47,6 +47,15 @@
         </activity>
 
         <activity
+            android:name=".Settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+        </activity>
+
+        <activity
             android:name=".CountDown"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

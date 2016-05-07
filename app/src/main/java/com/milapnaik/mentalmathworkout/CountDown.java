@@ -26,7 +26,7 @@ public class CountDown extends AppCompatActivity{
         timer = (TextView) findViewById(R.id.timer);
 
         timer.setTextSize(100);
-        timer.setTextColor(Color.rgb(0, 0, 0));
+        timer.setTextColor(Color.rgb(25, 4, 4));
 
 
 

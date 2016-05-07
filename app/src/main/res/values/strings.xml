@@ -10,7 +10,11 @@
     <string name="logo">Logo</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
-    <string name="about">Created by:</string>
+    <string name="about">This app is meant to help practice for the math portion
+                            of interviews with finance firms. Pick your difficulty setting
+                            and question amount for quick randomized practice sessions, or go
+                            for the full 80 question test. Enjoy!</string>
+    <string name="created">Created by:</string>
     <string name="name">Milap Naik</string>
     <string name="testsfrom">Tests from:</string>
 
