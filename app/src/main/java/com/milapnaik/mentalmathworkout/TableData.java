@@ -13,9 +13,10 @@ public class TableData {
 
     public static abstract class TableInfo implements BaseColumns{
 
-        public static final String QUESTION_ID = "QUESTION_ID";
-        public static final String QUESTION = "QUESTION";
-        public static final String ANSWER = "ANSWER";
+        public static final String LB_RANK = "LB_RANK";
+        public static final String LB_SCORE = "LB_SCORE";
+        public static final String LB_TIME = "LB_TIME";
+
         public static final String DATABASE_NAME = "PROBLEM_SETS";
         public static final String TABLE_NAME = "EASY_MATH";
 

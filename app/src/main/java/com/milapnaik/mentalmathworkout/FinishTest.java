@@ -13,6 +13,7 @@ import android.graphics.Color;
 public class FinishTest extends AppCompatActivity{
     public String correct = "0";
     public String timed = "0";
+    String rank = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,13 @@ public class FinishTest extends AppCompatActivity{
         time.setText("Time: " + timed);
 
         // Check for high scores
+
+
+
+        // Show high scores
+        BackgroundTask backgroundTask = new BackgroundTask(this);
+        backgroundTask.execute("add_info", rank, correct, timed);
+
 
     }
 }

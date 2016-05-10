@@ -17,7 +17,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     Context ctx;
     public static final int database_version = 1;
     public String CREATE_QUERY = "CREATE TABLE " + TableInfo.TABLE_NAME + "("
-            + TableInfo.QUESTION_ID + " TEXT," + TableInfo.QUESTION + " TEXT,"+ TableInfo.ANSWER +
+            + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
             " TEXT );";
 
 
@@ -31,10 +31,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sdb){
         sdb.execSQL(CREATE_QUERY);
 
-        //Insert problems for problem set
-
-        /*DatabaseOperations db = new DatabaseOperations(ctx);
-        insertProblem(db,"1", "9+9", "18");*/
     }
 
     @Override
@@ -42,25 +38,23 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     }
 
-    public void insertProblem(DatabaseOperations dop,String id, String problem, String answer){
+    public void addLeaderboard(SQLiteDatabase db,String rank, String score, String time){
 
-        SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(TableInfo.QUESTION_ID, id);
-        cv.put(TableInfo.QUESTION, problem);
-        cv.put(TableInfo.ANSWER, answer);
+        cv.put(TableInfo.LB_RANK, rank);
+        cv.put(TableInfo.LB_SCORE, score);
+        cv.put(TableInfo.LB_TIME, time);
 
-        long k = SQ.insert(TableInfo.TABLE_NAME, null, cv);
+        db.insert(TableInfo.TABLE_NAME, null, cv);
         //Log.d("Database Operations", "One row inserted");
     }
 
-    public Cursor getProblem(DatabaseOperations dop){
+    public  Cursor getLeaderboard(SQLiteDatabase db){
 
-        SQLiteDatabase SQ = dop.getWritableDatabase();
-        String[] columns = {TableInfo.QUESTION_ID, TableInfo.QUESTION, TableInfo.ANSWER};
+        String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
 
-        Cursor c = SQ.query(TableInfo.TABLE_NAME, columns, null, null, null, null, null);
+        Cursor c = db.query(TableInfo.TABLE_NAME, columns, null, null, null, null, null);
         return c;
 
     }

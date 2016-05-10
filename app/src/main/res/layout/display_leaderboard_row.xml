@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="75dp"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mathAnswer"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="-----------"
+            android:textSize="32sp"
+            android:textColor="#000"
+            android:id="@+id/lb_rank"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="-----------"
+            android:textSize="32sp"
+            android:textColor="#000"
+            android:id="@+id/lb_name"
+            android:gravity="center"
+            android:layout_toRightOf="@id/lb_rank"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="-----------"
+            android:textColor="#000"
+            android:textSize="32sp"
+            android:id="@+id/lb_score"
+            android:gravity="center"
+            android:layout_toRightOf="@id/lb_name"/>
+    </LinearLayout>
+
+</RelativeLayout>

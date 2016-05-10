@@ -24,5 +24,4 @@
         android:layout_below="@+id/leaderboard"
         android:layout_centerHorizontal="true" />
 
-
 </RelativeLayout>
