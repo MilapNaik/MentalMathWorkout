@@ -17,14 +17,14 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * Created by MilapNaik on 3/18/16.
+ * Created by MilapNaik on 5/10/16.
  */
-public class MathTest extends AppCompatActivity {
+public class MathPractice extends AppCompatActivity {
 
     int i = 0;
     int correctcount = 0;
+
     Question[] mathTest = new Question[80];
-    final int n = 80;
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     String Difficulty;
@@ -32,8 +32,6 @@ public class MathTest extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
-
-
 
 
     @Override
@@ -51,6 +49,9 @@ public class MathTest extends AppCompatActivity {
         mathProblem.setTextColor(Color.WHITE);
         mathAnswer.setTextSize(25);
         mathAnswer.setTextColor(Color.WHITE);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
@@ -239,17 +240,18 @@ public class MathTest extends AppCompatActivity {
                     correctcount++;
                     mathAnswer.setText("");
 
-                    Toast.makeText(MathTest.this,
+                    Toast.makeText(MathPractice.this,
                             R.string.correct_toast,
                             Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(MathTest.this,
+                    Toast.makeText(MathPractice.this,
                             correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
 
                 }
+
                 if (i < n) {
                     mathProblem.setText(mathTest[i].problem);
                     i++;
@@ -266,7 +268,7 @@ public class MathTest extends AppCompatActivity {
                     String sectime = Integer.toString(seconds);
                     String milsectime = Integer.toString(millis);
                     String time = minutes + ":" + sectime + "." + milsectime;
-                    Intent intent = new Intent(MathTest.this, FinishTest.class);
+                    Intent intent = new Intent(MathPractice.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
@@ -297,3 +299,4 @@ public class MathTest extends AppCompatActivity {
 
 
 }
+

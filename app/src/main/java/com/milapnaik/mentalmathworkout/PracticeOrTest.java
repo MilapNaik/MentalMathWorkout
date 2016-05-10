@@ -25,11 +25,11 @@ public class PracticeOrTest extends AppCompatActivity {
         Intent gintent = getIntent();
         final String test = gintent.getStringExtra(MainActivity.TEST_TYPE);
         Intent intent = new Intent(this, CountDown.class);
-        String difficulty = "Practice";
+        String testorpractice = "Practice";
 
         Bundle extras = new Bundle();
-        extras.putString("DIFFICULTY", difficulty);
-        extras.putString("TEST_TYPE", test);
+        extras.putString("TESTORPRACTICE", testorpractice);
+        extras.putString("MATHORSEQ", test);
         intent.putExtras(extras);
         startActivity(intent);
         finish();
@@ -39,11 +39,11 @@ public class PracticeOrTest extends AppCompatActivity {
         Intent gintent = getIntent();
         final String test = gintent.getStringExtra(MainActivity.TEST_TYPE);
         Intent intent = new Intent(this, CountDown.class);
-        String difficulty = "Test";
+        String testorpractice = "Test";
 
         Bundle extras = new Bundle();
-        extras.putString("DIFFICULTY", difficulty);
-        extras.putString("TEST_TYPE", test);
+        extras.putString("TESTORPRACTICE", testorpractice);
+        extras.putString("MATHORSEQ", test);
         intent.putExtras(extras);
         startActivity(intent);
         finish();

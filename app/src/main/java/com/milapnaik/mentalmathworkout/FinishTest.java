@@ -32,6 +32,9 @@ public class FinishTest extends AppCompatActivity{
         TextView time = (TextView) findViewById(R.id.time);
         time.setTextColor(Color.WHITE);
         time.setTextSize(25);
-        time.setText(timed + " seconds");
+        time.setText("Time: " + timed);
+
+        // Check for high scores
+
     }
 }

@@ -23,8 +23,8 @@ public class CountDown extends AppCompatActivity{
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        final String difficulty = extras.getString("DIFFICULTY");
-        final String test = extras.getString("TEST_TYPE");
+        final String testorpractice = extras.getString("TESTORPRACTICE");
+        final String mathorseq = extras.getString("MATHORSEQ");
 
         timer = (TextView) findViewById(R.id.timer);
 
@@ -42,17 +42,31 @@ public class CountDown extends AppCompatActivity{
 
             @Override
             public void onFinish() {
-                if (test.equals("Seqtest")) {
-                    Intent intent = new Intent(CountDown.this, SeqTest.class);
-                    intent.putExtra(DIFFICULTY, difficulty);
-                    startActivity(intent); //Start Sequence test
-                    finish();
+                if (mathorseq.equals("Seqtest")) {
+                    if(testorpractice.equals("Test")) {
+                        Intent intent = new Intent(CountDown.this, SeqTest.class);
+                        startActivity(intent); //Start Sequence test
+                        finish();
+                    }
+                    else{
+                        Intent intent = new Intent(CountDown.this, SeqTest.class);
+                        startActivity(intent); //Start Sequence test
+                        finish();
+                    }
+
                 }
-                else if (test.equals("Mathtest")) {
-                    Intent intent = new Intent(CountDown.this, MathTest.class);
-                    intent.putExtra(DIFFICULTY, difficulty);
-                    startActivity(intent); //Start Math test
-                    finish();
+                else if (mathorseq.equals("Mathtest")) {
+                    if(testorpractice.equals("Test")) {
+                        Intent intent = new Intent(CountDown.this, MathTest.class);
+                        startActivity(intent); //Start Math test
+                        finish();
+                    }
+                    else{
+                        Intent intent = new Intent(CountDown.this, MathPractice.class);
+                        startActivity(intent); //Start Math test
+                        finish();
+
+                    }
                 }
                 else{
                     Intent intent = new Intent(CountDown.this, MainActivity.class);

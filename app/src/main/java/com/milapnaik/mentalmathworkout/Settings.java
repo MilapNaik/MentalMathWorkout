@@ -1,5 +1,6 @@
 package com.milapnaik.mentalmathworkout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -58,6 +59,7 @@ public class Settings extends AppCompatActivity {
             hard.setChecked(false);
         }
     }
+
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -90,5 +92,54 @@ public class Settings extends AppCompatActivity {
                     break;
                 }
         }
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
+
+        Toast.makeText(Settings.this,
+                "Difficulty: " + Difficulty,
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void set5questions(View view) {
+        SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Editor editor = preference.edit();
+        editor.putInt("NUM_QUESTIONS", 5);
+        editor.commit();
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+        Toast.makeText(Settings.this,
+                "Set to " + n + " questions",
+                Toast.LENGTH_SHORT).show();;
+    }
+
+    public void set10questions(View view) {
+        SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Editor editor = preference.edit();
+        editor.putInt("NUM_QUESTIONS", 10);
+        editor.commit();
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+        Toast.makeText(Settings.this,
+                "Set to " + n + " questions",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void set20questions(View view) {
+        SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Editor editor = preference.edit();
+        editor.putInt("NUM_QUESTIONS", 20);
+        editor.commit();
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+        Toast.makeText(Settings.this,
+                "Set to " + n + " questions",
+                Toast.LENGTH_SHORT).show();
     }
 }
