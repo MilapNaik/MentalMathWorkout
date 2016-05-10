@@ -39,10 +39,20 @@ public class FinishTest extends AppCompatActivity{
 
 
 
+        // If high score, add to leaderboard
+        addScore(rank, correct, timed);
+
+
         // Show high scores
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        backgroundTask.execute("add_info", rank, correct, timed);
 
 
     }
+
+    public void addScore (String rank, String score, String time){
+        BackgroundTask backgroundTask = new BackgroundTask(this);
+        backgroundTask.execute("add_info", rank, correct, timed);
+
+    }
+
+
 }
