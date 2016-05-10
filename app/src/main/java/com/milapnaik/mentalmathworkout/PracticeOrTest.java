@@ -26,9 +26,13 @@ public class PracticeOrTest extends AppCompatActivity {
         final String test = gintent.getStringExtra(MainActivity.TEST_TYPE);
         Intent intent = new Intent(this, CountDown.class);
         String difficulty = "Practice";
-        intent.putExtra(DIFFICULTY, difficulty);
-        intent.putExtra(TEST_TYPE, test);
+
+        Bundle extras = new Bundle();
+        extras.putString("DIFFICULTY", difficulty);
+        extras.putString("TEST_TYPE", test);
+        intent.putExtras(extras);
         startActivity(intent);
+        finish();
     }
 
     public void MathTestTest(View view) {
@@ -36,9 +40,13 @@ public class PracticeOrTest extends AppCompatActivity {
         final String test = gintent.getStringExtra(MainActivity.TEST_TYPE);
         Intent intent = new Intent(this, CountDown.class);
         String difficulty = "Test";
-        intent.putExtra(DIFFICULTY, difficulty);
-        intent.putExtra(TEST_TYPE, test);
+
+        Bundle extras = new Bundle();
+        extras.putString("DIFFICULTY", difficulty);
+        extras.putString("TEST_TYPE", test);
+        intent.putExtras(extras);
         startActivity(intent);
+        finish();
     }
 
 }

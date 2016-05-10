@@ -5,4 +5,93 @@
     tools:context=".Settings"
     android:background="@color/background">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Settings"
+        android:textSize="32sp"
+        android:textColor="#000"
+        android:id="@+id/Settings"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <RadioGroup
+        android:id="@+id/difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Settings"
+        android:layout_marginTop="10dp"
+        android:onClick="onRadioButtonClicked">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/easy"
+            android:text="@string/easy"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/medium"
+            android:text="@string/medium"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/hard"
+            android:text="@string/hard"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5 Questions"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:id="@+id/q5"
+        android:background="@color/blackish"
+        android:layout_below="@+id/difficulty"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10 Questions"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:id="@+id/q10"
+        android:background="@color/blackish"
+        android:layout_below="@+id/q5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="20 Questions"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:id="@+id/q20"
+        android:background="@color/blackish"
+        android:layout_below="@+id/q10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"/>
+
 </RelativeLayout>

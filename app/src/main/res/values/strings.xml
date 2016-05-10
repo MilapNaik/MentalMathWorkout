@@ -18,5 +18,11 @@
     <string name="name">Milap Naik</string>
     <string name="testsfrom">Tests from:</string>
 
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+
+
+
 </resources>
 

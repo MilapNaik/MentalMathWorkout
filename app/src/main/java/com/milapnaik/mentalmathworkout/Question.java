@@ -7,12 +7,15 @@ public class Question {
 
     String problem;
     String answer;
-    public Question()
-    {
+
+    public Question() {
     }
 
-    public Question (String prob, String ans){
+    public void setQuestion (String prob){
         problem = prob;
+    }
+
+    public void setAnswer (String ans){
         answer = ans;
     }
 }

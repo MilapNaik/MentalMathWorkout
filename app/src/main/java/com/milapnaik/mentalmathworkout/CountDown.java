@@ -19,9 +19,12 @@ public class CountDown extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cd);
+
         Intent intent = getIntent();
-        final String test = intent.getStringExtra(PracticeOrTest.TEST_TYPE);
-        final String difficulty = intent.getStringExtra(PracticeOrTest.DIFFICULTY);
+        Bundle extras = intent.getExtras();
+
+        final String difficulty = extras.getString("DIFFICULTY");
+        final String test = extras.getString("TEST_TYPE");
 
         timer = (TextView) findViewById(R.id.timer);
 
@@ -43,11 +46,13 @@ public class CountDown extends AppCompatActivity{
                     Intent intent = new Intent(CountDown.this, SeqTest.class);
                     intent.putExtra(DIFFICULTY, difficulty);
                     startActivity(intent); //Start Sequence test
+                    finish();
                 }
                 else if (test.equals("Mathtest")) {
                     Intent intent = new Intent(CountDown.this, MathTest.class);
                     intent.putExtra(DIFFICULTY, difficulty);
                     startActivity(intent); //Start Math test
+                    finish();
                 }
                 else{
                     Intent intent = new Intent(CountDown.this, MainActivity.class);

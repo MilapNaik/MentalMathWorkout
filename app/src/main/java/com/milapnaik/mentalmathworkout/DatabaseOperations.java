@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.database.Cursor;
 
 import com.milapnaik.mentalmathworkout.TableData.TableInfo;
 
@@ -16,7 +17,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     Context ctx;
     public static final int database_version = 1;
     public String CREATE_QUERY = "CREATE TABLE " + TableInfo.TABLE_NAME + "("
-            + TableInfo.PROBLEM + " TEXT," + TableInfo.ANSWER +
+            + TableInfo.QUESTION_ID + " TEXT," + TableInfo.QUESTION + " TEXT,"+ TableInfo.ANSWER +
             " TEXT );";
 
 
@@ -32,8 +33,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         //Insert problems for problem set
 
-        DatabaseOperations db = new DatabaseOperations(ctx);
-        insertProblem(db, "9+9", "18");
+        /*DatabaseOperations db = new DatabaseOperations(ctx);
+        insertProblem(db,"1", "9+9", "18");*/
     }
 
     @Override
@@ -41,16 +42,26 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     }
 
-    public void insertProblem(DatabaseOperations dop, String problem, String answer){
+    public void insertProblem(DatabaseOperations dop,String id, String problem, String answer){
 
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(TableInfo.PROBLEM, problem);
+        cv.put(TableInfo.QUESTION_ID, id);
+        cv.put(TableInfo.QUESTION, problem);
         cv.put(TableInfo.ANSWER, answer);
 
         long k = SQ.insert(TableInfo.TABLE_NAME, null, cv);
         //Log.d("Database Operations", "One row inserted");
+    }
+
+    public Cursor getProblem(DatabaseOperations dop){
+
+        SQLiteDatabase SQ = dop.getWritableDatabase();
+        String[] columns = {TableInfo.QUESTION_ID, TableInfo.QUESTION, TableInfo.ANSWER};
+
+        Cursor c = SQ.query(TableInfo.TABLE_NAME, columns, null, null, null, null, null);
+        return c;
 
     }
 }

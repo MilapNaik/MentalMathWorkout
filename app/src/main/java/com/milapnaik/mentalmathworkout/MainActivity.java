@@ -11,15 +11,22 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Button;
 
+
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
+    private DatabaseOperations db;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
+        Context ctx = this;
+        db = new DatabaseOperations(ctx);
+        db.close();
 
     }
 
