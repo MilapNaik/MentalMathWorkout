@@ -28,6 +28,7 @@ public class MathPractice extends AppCompatActivity {
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     String Difficulty;
+    int qcount = 1;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
@@ -60,13 +61,11 @@ public class MathPractice extends AppCompatActivity {
         try {
 
             InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
-            if( Difficulty.equals("Hard")) {
+            if (Difficulty.equals("Hard")) {
                 is = this.getResources().openRawResource(R.raw.hardmath);
-            }
-            else if ( Difficulty.equals("Medium")) {
+            } else if (Difficulty.equals("Medium")) {
                 is = this.getResources().openRawResource(R.raw.mediummath);
-            }
-            else {
+            } else {
                 is = this.getResources().openRawResource(R.raw.easymath);
             }
 
@@ -91,7 +90,7 @@ public class MathPractice extends AppCompatActivity {
         i = 0;
 
         mathProblem.setText(mathTest[i].problem);
-        qCount.setText(i+1 + "/" + n);
+        qCount.setText(qcount + "/" + n);
         mStartTime = System.currentTimeMillis();
 
         Button n1Button = (Button) findViewById(R.id.n1);
@@ -246,40 +245,40 @@ public class MathPractice extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(MathPractice.this,
-                            correctAnswer,
+                            "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
-
                 }
+                i++;
 
                 if (i < n) {
+                    qcount++;
+                    qCount.setText(qcount + "/" + n);
                     mathProblem.setText(mathTest[i].problem);
-                    i++;
-                    qCount.setText(i+1 + "/" + n);
                 }
 
-                if (i  >= n ) {
+
+                if (i >= n) {
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
                     int seconds = (int) (mTotalTime / 1000);
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
-                    String sectime = Integer.toString(seconds);
-                    String milsectime = Integer.toString(millis);
-                    String time = minutes + ":" + sectime + "." + milsectime;
+                    //String sectime = Integer.toString(seconds);
+                    //String milsectime = Integer.toString(millis);
+                    String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
                     Intent intent = new Intent(MathPractice.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
-                    extras.putString("NUM_CORRECT",count);
+                    extras.putString("NUM_CORRECT", count);
                     intent.putExtras(extras);
                     startActivity(intent);
                     finish();
                 }
             }
-
         });
     }
 

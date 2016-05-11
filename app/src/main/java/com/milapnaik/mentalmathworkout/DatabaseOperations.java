@@ -15,26 +15,39 @@ import com.milapnaik.mentalmathworkout.TableData.TableInfo;
 public class DatabaseOperations extends SQLiteOpenHelper {
 
     Context ctx;
-    public static final int database_version = 1;
+    public static final int database_version = 2;
     public String CREATE_QUERY = "CREATE TABLE " + TableInfo.TABLE_NAME + "("
             + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
             " TEXT );";
+    public String CREATE_QUERY2 = "CREATE TABLE " + TableInfo.TABLE_NAME2 + "("
+            + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
+            " TEXT );";
+    public String CREATE_QUERY3 = "CREATE TABLE " + TableInfo.TABLE_NAME3 + "("
+            + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
+            " TEXT );";
+    public String DROP_QUERY = "DROP TABLE " + TableInfo.TABLE_NAME + ";";
 
 
     public DatabaseOperations(Context context){
         super(context, TableInfo.DATABASE_NAME, null, database_version);
 
-        this.ctx = context;
+        //this.ctx = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sdb){
         sdb.execSQL(CREATE_QUERY);
+        sdb.execSQL(CREATE_QUERY2);
+        sdb.execSQL(CREATE_QUERY3);
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2){
+    public void onUpgrade(SQLiteDatabase sdb, int arg1, int arg2){
+        sdb.execSQL(DROP_QUERY);
+        sdb.execSQL(CREATE_QUERY);
+        sdb.execSQL(CREATE_QUERY2);
+        sdb.execSQL(CREATE_QUERY3);
 
     }
 

@@ -33,7 +33,6 @@
         android:textSize="25sp"
         android:id="@+id/mathAnswer"
         android:background="@color/blackish"
-        android:gravity="center"
 
         android:layout_marginTop="3dp"
         android:layout_below="@+id/mathProblem"
@@ -52,8 +51,8 @@
             android:text="1"
             android:textSize="25sp"
             android:id="@+id/n1"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             android:layout_below="@+id/mathAnswer"
             android:layout_marginTop="25dp"/>
 
@@ -64,8 +63,8 @@
             android:text="2"
             android:textSize="25sp"
             android:id="@+id/n2"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             android:layout_below="@+id/mathAnswer"
             android:layout_marginTop="25dp" />
 
@@ -76,8 +75,8 @@
             android:text="3"
             android:textSize="25sp"
             android:id="@+id/n3"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             android:layout_below="@+id/mathAnswer"
             android:layout_marginTop="25dp"/>
     </LinearLayout>
@@ -93,8 +92,8 @@
             android:layout_weight="1"
             android:text="4"
             android:textSize="25sp"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             android:id="@+id/n4" />
 
         <Button
@@ -103,8 +102,8 @@
             android:layout_weight="1"
             android:text="5"
             android:textSize="25sp"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             android:id="@+id/n5"/>
 
         <Button
@@ -113,8 +112,8 @@
             android:layout_weight="1"
             android:text="6"
             android:textSize="25sp"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             android:id="@+id/n6" />
     </LinearLayout>
 
@@ -131,8 +130,8 @@
             android:text="7"
             android:textSize="25sp"
             android:id="@+id/n7"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad" />
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector" />
 
         <Button
             android:layout_width="match_parent"
@@ -141,8 +140,8 @@
             android:text="8"
             android:textSize="25sp"
             android:id="@+id/n8"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad"
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector"
             />
 
         <Button
@@ -152,8 +151,8 @@
             android:text="9"
             android:textSize="25sp"
             android:id="@+id/n9"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad" />
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector" />
     </LinearLayout>
 
     <LinearLayout
@@ -168,8 +167,8 @@
             android:text="-"
             android:textSize="25sp"
             android:id="@+id/nminus"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad" />
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector" />
 
         <Button
             android:layout_width="match_parent"
@@ -178,8 +177,8 @@
             android:text="0"
             android:textSize="25sp"
             android:id="@+id/n0"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad" />
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector" />
 
         <Button
             android:layout_width="match_parent"
@@ -188,8 +187,8 @@
             android:text="."
             android:textSize="25sp"
             android:id="@+id/ndecimal"
-            android:textColor="#FFF"
-            android:background="@drawable/keypad" />
+            android:textColor="@drawable/button_text_color"
+            android:background="@drawable/keypad_selector" />
     </LinearLayout>
 
     <Button
@@ -198,8 +197,8 @@
         android:text="C"
         android:textSize="25sp"
         android:id="@+id/clear"
-        android:textColor="#FFF"
-        android:background="@color/blackish"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/blackbuttonclick"
         android:layout_marginTop="3dp"
         android:layout_below="@id/LinearLayout4"/>
 
@@ -209,8 +208,8 @@
         android:text="Enter"
         android:textSize="25sp"
         android:id="@+id/enterButton"
-        android:textColor="#FFF"
-        android:background="@color/blackish"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/blackbuttonclick"
         android:layout_below="@id/clear"
         android:layout_marginTop="3dp" />
 

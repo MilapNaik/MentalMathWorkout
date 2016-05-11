@@ -22,9 +22,8 @@ import android.content.Context;
  */
 public class Leaderboard extends AppCompatActivity {
 
-    private Cursor Leaderboard;
     private DatabaseOperations DBop;
-    LB_Adapter lbadapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,31 +33,19 @@ public class Leaderboard extends AppCompatActivity {
         TextView showq;
         String idnumber;
         Context ctx = this;
-        String rank, score, time;
 
-        final ListView listview = (ListView) findViewById(R.id.listView);
+
+        BackgroundTask backgroundTask = new BackgroundTask(ctx);
+        backgroundTask.execute("get_info");
+
+
+        /*final ListView listview = (ListView) findViewById(R.id.display_listview);
         String[] values = new String[] {TableData.TableInfo.LB_RANK, TableData.TableInfo.LB_SCORE,
                                         TableData.TableInfo.LB_TIME};
-        int[] toViewIDS = new int[] {R.id.lb_rank, R.id.lb_name, R.id.lb_score};
+        int[] toViewIDS = new int[] {R.id.lb_rank, R.id.lb_score, R.id.lb_time};
 
         DBop = new DatabaseOperations(ctx);
-        SQLiteDatabase db = DBop.getReadableDatabase();
-
-        Leaderboard = DBop.getLeaderboard(db);
-        lbadapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
-
-        while(Leaderboard.moveToNext()){
-            rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
-            score = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
-            time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
-            LB leaderboard = new LB(rank, score, time);
-            //publishProgress(leaderboard);
-        }
-
-
-
-
-        /*id = (EditText) findViewById(R.id.editText);
+        id = (EditText) findViewById(R.id.editText);
         showq = (TextView) findViewById(R.id.textView);
 
         idnumber = id.getText().toString();

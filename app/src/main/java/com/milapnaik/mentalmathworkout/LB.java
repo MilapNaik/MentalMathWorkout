@@ -5,12 +5,12 @@ package com.milapnaik.mentalmathworkout;
  */
 public class LB {
 
-    private String rank, name, score;
+    private String rank, score, time;
 
-    public LB(String rank, String name, String score){
+    public LB(String rank, String score, String time){
         this.setRank(rank);
-        this.setName(name);
         this.setScore(score);
+        this.setTime(time);
     }
 
     public String getRank(){
@@ -23,16 +23,6 @@ public class LB {
 
     }
 
-    public String getName(){
-        return name;
-
-    }
-
-    public void setName(String name){
-        this.name = name;
-
-    }
-
     public String getScore(){
         return score;
 
@@ -40,6 +30,16 @@ public class LB {
 
     public void setScore(String score){
         this.score = score;
+
+    }
+
+    public String getTime(){
+        return time;
+
+    }
+
+    public void setTime(String time){
+        this.time = time;
 
     }
 }

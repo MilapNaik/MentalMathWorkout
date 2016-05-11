@@ -17,8 +17,10 @@ public class TableData {
         public static final String LB_SCORE = "LB_SCORE";
         public static final String LB_TIME = "LB_TIME";
 
-        public static final String DATABASE_NAME = "PROBLEM_SETS";
+        public static final String DATABASE_NAME = "HIGH_SCORES";
         public static final String TABLE_NAME = "EASY_MATH";
+        public static final String TABLE_NAME2 = "MEDIUM_MATH";
+        public static final String TABLE_NAME3 = "HARD_MATH";
 
     }
 }
