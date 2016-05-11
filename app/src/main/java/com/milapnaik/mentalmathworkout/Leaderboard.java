@@ -36,7 +36,7 @@ public class Leaderboard extends AppCompatActivity {
 
 
         BackgroundTask backgroundTask = new BackgroundTask(ctx);
-        backgroundTask.execute("get_info");
+        backgroundTask.execute("get_eminfo");
 
 
         /*final ListView listview = (ListView) findViewById(R.id.display_listview);

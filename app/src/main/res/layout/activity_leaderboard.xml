@@ -17,11 +17,50 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp" />
 
+    <LinearLayout
+        android:id="@+id/linearbuttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leaderboard"
+        android:layout_centerHorizontal="true">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="New Button"
+                android:id="@+id/easybutton"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="New Button"
+                android:id="@+id/mediumbutton"
+                android:layout_below="@id/leaderboard"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="New Button"
+                android:id="@+id/hardbutton"
+                android:layout_below="@id/leaderboard"/>
+    </LinearLayout>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/mathToggle"
+        android:layout_below="@+id/linearbuttons"
+        android:layout_centerHorizontal="true"/>
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/display_listview"
-        android:layout_below="@+id/leaderboard"
+        android:layout_below="@+id/mathToggle"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

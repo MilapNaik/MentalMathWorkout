@@ -51,7 +51,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     }
 
-    public void addLeaderboard(SQLiteDatabase db,String rank, String score, String time){
+    public void addemLeaderboard(SQLiteDatabase db,String rank, String score, String time){
 
         ContentValues cv = new ContentValues();
 
@@ -62,12 +62,50 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         db.insert(TableInfo.TABLE_NAME, null, cv);
         //Log.d("Database Operations", "One row inserted");
     }
+    public void addmmLeaderboard(SQLiteDatabase db,String rank, String score, String time){
 
-    public  Cursor getLeaderboard(SQLiteDatabase db){
+        ContentValues cv = new ContentValues();
+
+        cv.put(TableInfo.LB_RANK, rank);
+        cv.put(TableInfo.LB_SCORE, score);
+        cv.put(TableInfo.LB_TIME, time);
+
+        db.insert(TableInfo.TABLE_NAME2, null, cv);
+        //Log.d("Database Operations", "One row inserted");
+    }
+    public void addhmLeaderboard(SQLiteDatabase db,String rank, String score, String time){
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(TableInfo.LB_RANK, rank);
+        cv.put(TableInfo.LB_SCORE, score);
+        cv.put(TableInfo.LB_TIME, time);
+
+        db.insert(TableInfo.TABLE_NAME3, null, cv);
+        //Log.d("Database Operations", "One row inserted");
+    }
+
+    public  Cursor getemLeaderboard(SQLiteDatabase db){
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
 
         Cursor c = db.query(TableInfo.TABLE_NAME, columns, null, null, null, null, null);
+        return c;
+
+    }
+    public  Cursor getmmLeaderboard(SQLiteDatabase db){
+
+        String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
+
+        Cursor c = db.query(TableInfo.TABLE_NAME2, columns, null, null, null, null, null);
+        return c;
+
+    }
+    public  Cursor gethmLeaderboard(SQLiteDatabase db){
+
+        String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
+
+        Cursor c = db.query(TableInfo.TABLE_NAME3, columns, null, null, null, null, null);
         return c;
 
     }
