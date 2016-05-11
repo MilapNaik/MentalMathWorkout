@@ -3,18 +3,13 @@ package com.milapnaik.mentalmathworkout;
 import android.app.ListActivity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-import android.text.method.LinkMovementMethod;
-import android.text.Html;
-import android.widget.ListView;
 
-import android.database.Cursor;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
+import android.widget.ToggleButton;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 
 /**
@@ -23,47 +18,44 @@ import android.content.Context;
 public class Leaderboard extends AppCompatActivity {
 
     private DatabaseOperations DBop;
+    ToggleButton math, seq;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-        EditText id;
-        TextView showq;
-        String idnumber;
+        Button easy, medium, hard;
+
+        math = (ToggleButton) findViewById(R.id.mathToggle);
+        seq = (ToggleButton) findViewById(R.id.seqToggle);
+
+        easy = (Button) findViewById(R.id.easybutton);
+        medium = (Button) findViewById(R.id.mediumbutton);
+        hard = (Button) findViewById(R.id.hardbutton);
+
+        math.setOnCheckedChangeListener(changeChecker);
+        seq.setOnCheckedChangeListener(changeChecker);
+
         Context ctx = this;
 
 
         BackgroundTask backgroundTask = new BackgroundTask(ctx);
         backgroundTask.execute("get_eminfo");
 
-
-        /*final ListView listview = (ListView) findViewById(R.id.display_listview);
-        String[] values = new String[] {TableData.TableInfo.LB_RANK, TableData.TableInfo.LB_SCORE,
-                                        TableData.TableInfo.LB_TIME};
-        int[] toViewIDS = new int[] {R.id.lb_rank, R.id.lb_score, R.id.lb_time};
-
-        DBop = new DatabaseOperations(ctx);
-        id = (EditText) findViewById(R.id.editText);
-        showq = (TextView) findViewById(R.id.textView);
-
-        idnumber = id.getText().toString();
-
-
-        db.insertProblem(db, "1", "9+9", "18");
-        Questions = db.getProblem(db);
-        db.insertProblem(db, "1", "9+9", "18");
-        Questions.moveToFirst();
-        boolean status = false;
-        String Qn = "";
-        showq.setText(Questions.getString(1));
-        do{
-            if (id.equals(Questions.getString(0))){
-                showq.setText(Questions.getString(1));
-            }
-
-        }while(Questions.moveToNext());*/
-
     }
+
+    OnCheckedChangeListener changeChecker = new OnCheckedChangeListener() {
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked){
+            if (buttonView != math) {
+                math.setChecked(false);
+            }
+            if (buttonView != seq) {
+                seq.setChecked(false);
+            }
+        }
+    }
+    };
+
 }

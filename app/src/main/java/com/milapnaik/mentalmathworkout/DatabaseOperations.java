@@ -89,7 +89,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
 
-        Cursor c = db.query(TableInfo.TABLE_NAME, columns, null, null, null, null, null);
+        Cursor c = db.query(TableInfo.TABLE_NAME, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         return c;
 
     }
@@ -97,7 +97,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
 
-        Cursor c = db.query(TableInfo.TABLE_NAME2, columns, null, null, null, null, null);
+        Cursor c = db.query(TableInfo.TABLE_NAME2, null, null, null, null, null, TableInfo.LB_SCORE + " DESC", "5");
         return c;
 
     }
@@ -105,7 +105,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
 
-        Cursor c = db.query(TableInfo.TABLE_NAME3, columns, null, null, null, null, null);
+        Cursor c = db.query(TableInfo.TABLE_NAME3, null, null, null, null, null, TableInfo.LB_SCORE + " DESC", "5");
         return c;
 
     }

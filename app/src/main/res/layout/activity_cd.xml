@@ -5,34 +5,13 @@
     tools:context=".CountDown"
     android:background="@color/background">
 
-    <!--<ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageone"
-        android:src="@drawable/one"
-        android:background="#bcb8b8"
-        android:layout_alignTop="@+id/imagetwo"
+        android:id="@+id/test"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imagetwo"
-        android:src="@drawable/two"
-        android:background="#bcb8b8"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imagethree"
-        android:src="@drawable/three"
-        android:background="#bcb8b8"
-        android:layout_alignTop="@+id/imageone"
-        android:layout_alignRight="@+id/imagetwo"
-        android:layout_alignEnd="@+id/imagetwo" />-->
 
 
     <TextView

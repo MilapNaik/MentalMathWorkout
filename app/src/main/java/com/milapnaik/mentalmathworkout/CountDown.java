@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class CountDown extends AppCompatActivity{
     public final static String DIFFICULTY = "com.milapnaik.mentalmathworkout.MESSAGE";
     CountDownTimer countDownTimer;
-    TextView timer;
+    TextView timer, test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +27,21 @@ public class CountDown extends AppCompatActivity{
         final String mathorseq = extras.getString("MATHORSEQ");
 
         timer = (TextView) findViewById(R.id.timer);
+        test = (TextView) findViewById(R.id.test);
 
         timer.setTextSize(100);
         timer.setTextColor(Color.rgb(25, 4, 4));
 
+        test.setTextSize(32);
+        test.setTextColor(Color.rgb(25, 4, 4));
+
+        if (mathorseq.equals("Seqtest")) {
+            test.setText("Sequence Test");
+        }
+        else{
+            test.setText("Math Test");
+
+        }
 
 
 
@@ -50,7 +61,7 @@ public class CountDown extends AppCompatActivity{
                     }
                     else{
                         Intent intent = new Intent(CountDown.this, SeqTest.class);
-                        startActivity(intent); //Start Sequence test
+                        startActivity(intent); //Start Sequence practice
                         finish();
                     }
 
@@ -63,7 +74,7 @@ public class CountDown extends AppCompatActivity{
                     }
                     else{
                         Intent intent = new Intent(CountDown.this, MathPractice.class);
-                        startActivity(intent); //Start Math test
+                        startActivity(intent); //Start Math practice
                         finish();
 
                     }

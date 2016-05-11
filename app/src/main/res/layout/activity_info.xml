@@ -23,19 +23,19 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/created"
         android:id="@+id/Created"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="#000"
         android:layout_below="@id/info"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="55dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/name"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textColor="#000"
         android:id="@+id/name"
         android:layout_below="@+id/Created"
@@ -45,14 +45,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="#000"
-        android:text="@string/testsfrom"
+        android:text="@string/inspiration"
         android:id="@+id/testsfrom"
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="32dp"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -42,13 +42,9 @@ public class FinishTest extends AppCompatActivity{
         time.setText("Time: " + timed);
 
 
-        // Find what difficulty this is
+        // Find what difficulty this is from the preferences
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
-
-        // Check if high score
-
-
 
         // Add to leaderboard
         if (Difficulty.equals("Hard")){
@@ -64,7 +60,7 @@ public class FinishTest extends AppCompatActivity{
             backgroundTask.execute("add_eminfo", rank, correct, timed);
         }
 
-        // Show high scores
+        // Show top 5 scores
         if (Difficulty.equals("Hard")){
             BackgroundTask backgroundTask = new BackgroundTask(ctx);
             backgroundTask.execute("get_hminfo");

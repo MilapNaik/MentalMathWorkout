@@ -17,7 +17,7 @@ public class Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         TextView textView =(TextView)findViewById(R.id.TTlink);
-        textView.setTextSize(32);
+        textView.setTextSize(28);
         textView.setClickable(true);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         String text = "<a href='http://www.tradertest.org'> tradertest.org </a>";
