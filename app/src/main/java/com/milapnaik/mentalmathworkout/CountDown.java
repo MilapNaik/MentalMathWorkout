@@ -98,4 +98,11 @@ public class CountDown extends AppCompatActivity{
         }.start();
 
     }
+
+    // Kill activity if countdown starts but back button is pressed
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        this.finish();
+    }
 }

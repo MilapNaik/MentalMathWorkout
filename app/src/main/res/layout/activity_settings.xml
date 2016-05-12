@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="5 Questions"
-        android:textColor="#FFF"
+        android:textColor="@drawable/button_text_color"
         android:textSize="20dp"
         android:id="@+id/q5"
         android:onClick="set5questions"
