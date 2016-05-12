@@ -19,6 +19,7 @@ public class FinishTest extends AppCompatActivity{
     public String test_type = "";
     String rank = "1";
     String Difficulty;
+    int Questions;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
 
@@ -29,10 +30,22 @@ public class FinishTest extends AppCompatActivity{
         Intent intent = getIntent();
         Context ctx = this;
 
+        // Find correct answers, amount of time, and test type
         Bundle extras = intent.getExtras();
         correct = extras.getString("NUM_CORRECT");
         timed = extras.getString("TIMER");
         test_type = extras.getString("TEST_TYPE");
+
+        // Find what difficulty from the preferences
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
+        Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+
+        TextView leaderboard = (TextView) findViewById(R.id.leaderboard);
+        leaderboard.setTextColor(Color.BLACK);
+        leaderboard.setTextSize(25);
+        leaderboard.setText(Questions + " " + Difficulty + " Leaderboard");
 
         TextView numcorrect = (TextView) findViewById(R.id.correct_count);
         numcorrect.setTextColor(Color.WHITE);
@@ -45,9 +58,6 @@ public class FinishTest extends AppCompatActivity{
         time.setText("Time: " + timed);
 
 
-        // Find what difficulty from the preferences
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
 
         // Add to specific leaderboard

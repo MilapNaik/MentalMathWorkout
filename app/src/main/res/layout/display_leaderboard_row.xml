@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="75dp"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="@color/background">
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mathAnswer"
-        android:layout_marginTop="10dp">
+        android:layout_below="@id/mathAnswer">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,8 +18,7 @@
             android:textSize="25sp"
             android:textColor="#000"
             android:id="@+id/lb_rank"
-            android:gravity="center"
-            android:layout_alignParentLeft="true" />
+            android:gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,8 +30,7 @@
             android:textSize="25sp"
             android:textColor="#000"
             android:id="@+id/lb_score"
-            android:gravity="center"
-            android:layout_toRightOf="@id/lb_rank"/>
+            android:gravity="center"/>
 
         <TextView
             android:layout_width="130dp"
@@ -45,8 +42,7 @@
             android:textColor="#000"
             android:textSize="25sp"
             android:id="@+id/lb_time"
-            android:gravity="right"
-            android:layout_toRightOf="@id/lb_score"/>
+            android:gravity="right"/>
     </LinearLayout>
 
 </RelativeLayout>

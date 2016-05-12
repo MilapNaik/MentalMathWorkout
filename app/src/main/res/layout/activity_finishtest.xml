@@ -11,6 +11,18 @@
     android:background="@color/background">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Leaderboards"
+        android:textSize="32sp"
+        android:textColor="#000"
+        android:id="@+id/leaderboard"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -32,9 +44,9 @@
         android:id="@+id/correct_count"
         android:textAlignment="center"
         android:background="@color/blackish"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/leaderboard"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -50,5 +62,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/display_listview"
         android:layout_below="@+id/time" />
+
 
 </RelativeLayout>
