@@ -42,7 +42,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             int scoreint = Integer.parseInt(score);
 
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addemLeaderboard(db, rank, scoreint, time);
+            dbops.addemLeaderboard(ctx, db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -54,7 +54,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             int scoreint = Integer.parseInt(score);
 
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addmmLeaderboard(db, rank, scoreint, time);
+            dbops.addmmLeaderboard(ctx, db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -110,7 +110,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
             SQLiteDatabase db = dbops.getReadableDatabase();
-            Cursor Leaderboard = dbops.getemLeaderboard(db);
+            Cursor Leaderboard = dbops.getemLeaderboard(ctx, db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
@@ -135,7 +135,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
             SQLiteDatabase db = dbops.getReadableDatabase();
-            Cursor Leaderboard = dbops.getmmLeaderboard(db);
+            Cursor Leaderboard = dbops.getmmLeaderboard(ctx, db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 

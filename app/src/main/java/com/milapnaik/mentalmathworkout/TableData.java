@@ -18,13 +18,30 @@ public class TableData {
         public static final String LB_TIME = "LB_TIME";
 
         public static final String DATABASE_NAME = "HIGH_SCORES";
-        public static final String TABLE_EM = "EASY_MATH";
-        public static final String TABLE_MM = "MEDIUM_MATH";
-        public static final String TABLE_HM = "HARD_MATH";
 
-        public static final String TABLE_ES = "EASY_SEQ";
-        public static final String TABLE_MS = "MEDIUM_SEQ";
-        public static final String TABLE_HS = "HARD_SEQ";
+        public static final String TABLE_EM5 = "EASY_MATH5";
+        public static final String TABLE_EM10 = "EASY_MATH10";
+        public static final String TABLE_EM20 = "EASY_MATH20";
+
+        public static final String TABLE_MM5 = "MEDIUM_MATH5";
+        public static final String TABLE_MM10 = "MEDIUM_MATH10";
+        public static final String TABLE_MM20 = "MEDIUM_MATH20";
+
+        public static final String TABLE_HM = "HARD_MATH";
+        public static final String TABLE_HM10 = "HARD_MATH";
+        public static final String TABLE_HM20 = "HARD_MATH";
+
+        public static final String TABLE_ES5 = "EASY_SEQ5";
+        public static final String TABLE_ES10 = "EASY_SEQ10";
+        public static final String TABLE_ES20 = "EASY_SEQ20";
+
+        public static final String TABLE_MS5 = "MEDIUM_SEQ5";
+        public static final String TABLE_MS10 = "MEDIUM_SEQ10";
+        public static final String TABLE_MS20 = "MEDIUM_SEQ20";
+
+        public static final String TABLE_HS5 = "HARD_SEQ5";
+        public static final String TABLE_HS10 = "HARD_SEQ10";
+        public static final String TABLE_HS20 = "HARD_SEQ20";
 
     }
 }

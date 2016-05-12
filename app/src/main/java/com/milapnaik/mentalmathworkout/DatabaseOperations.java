@@ -2,6 +2,7 @@ package com.milapnaik.mentalmathworkout;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -14,14 +15,32 @@ import com.milapnaik.mentalmathworkout.TableData.TableInfo;
  */
 public class DatabaseOperations extends SQLiteOpenHelper {
 
-    Context ctx;
-    public static final int database_version = 7;
-    public String CREATE_EMQUERY = "CREATE TABLE " + TableInfo.TABLE_EM + "("
+    private Context ctx;
+    int Questions;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    SharedPreferences sharedpreferences;
+    public static final int database_version = 1;
+
+    public String CREATE_EMQUERY5 = "CREATE TABLE " + TableInfo.TABLE_EM5 + "("
             + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
             " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
-    public String CREATE_MMQUERY = "CREATE TABLE " + TableInfo.TABLE_MM + "("
+    public String CREATE_EMQUERY10 = "CREATE TABLE " + TableInfo.TABLE_EM10 + "("
             + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
             " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
+    public String CREATE_EMQUERY20 = "CREATE TABLE " + TableInfo.TABLE_EM20 + "("
+            + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
+
+    public String CREATE_MMQUERY5 = "CREATE TABLE " + TableInfo.TABLE_MM5 + "("
+            + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
+    public String CREATE_MMQUERY10 = "CREATE TABLE " + TableInfo.TABLE_MM10 + "("
+            + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
+    public String CREATE_MMQUERY20 = "CREATE TABLE " + TableInfo.TABLE_MM20 + "("
+            + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
+
     public String CREATE_HMQUERY = "CREATE TABLE " + TableInfo.TABLE_HM + "("
             + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
             " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
@@ -56,19 +75,32 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sdb){
-        sdb.execSQL(CREATE_EMQUERY);
-        sdb.execSQL(CREATE_MMQUERY);
+        sdb.execSQL(CREATE_EMQUERY5);
+        sdb.execSQL(CREATE_EMQUERY10);
+        sdb.execSQL(CREATE_EMQUERY20);
+
+        sdb.execSQL(CREATE_MMQUERY5);
+        sdb.execSQL(CREATE_MMQUERY10);
+        sdb.execSQL(CREATE_MMQUERY20);
+
         sdb.execSQL(CREATE_HMQUERY);
 
         sdb.execSQL(CREATE_ESQUERY);
         sdb.execSQL(CREATE_MSQUERY);
         sdb.execSQL(CREATE_HSQUERY);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sdb, int arg1, int arg2){
-        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_EM);
-        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_MM);
+        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_EM5);
+        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_EM10);
+        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_EM20);
+
+        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_MM5);
+        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_MM10);
+        sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_MM20);
+
         sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_HM);
 
         sdb.execSQL("DROP TABLE IF EXISTS " + TableInfo.TABLE_ES);
@@ -77,26 +109,46 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         onCreate(sdb);
     }
 
-    public void addemLeaderboard(SQLiteDatabase db,String rank, int score, String time){
+    public void addemLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
 
         cv.put(TableInfo.LB_SCORE, score);
         cv.put(TableInfo.LB_TIME, time);
+        this.ctx = context;
 
-        db.insert(TableInfo.TABLE_EM, null, cv);
 
-        db.rawQuery(DEL_ALLBUTES, null);
+        // Find how manny questions from the preferences
+        sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+        if (Questions == 20)
+            db.insert(TableInfo.TABLE_EM20, null, cv);
+        else if (Questions == 10)
+            db.insert(TableInfo.TABLE_EM10, null, cv);
+        else
+            db.insert(TableInfo.TABLE_EM5, null, cv);
+
         //Log.d("Database Operations", "One row inserted");
     }
-    public void addmmLeaderboard(SQLiteDatabase db,String rank, int score, String time){
+    public void addmmLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
 
         cv.put(TableInfo.LB_SCORE, score);
         cv.put(TableInfo.LB_TIME, time);
+        this.ctx = context;
 
-        db.insert(TableInfo.TABLE_MM, null, cv);
+        // Find how manny questions from the preferences
+        sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+        if (Questions == 20)
+            db.insert(TableInfo.TABLE_MM20, null, cv);
+        else if (Questions == 10)
+            db.insert(TableInfo.TABLE_MM10, null, cv);
+        else
+            db.insert(TableInfo.TABLE_MM5, null, cv);
 
         db.rawQuery(DEL_ALLBUTES, null);
         //Log.d("Database Operations", "One row inserted");
@@ -110,7 +162,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         db.insert(TableInfo.TABLE_HM, null, cv);
 
-        db.rawQuery(DEL_ALLBUTES, null);
+        db.execSQL(DEL_ALLBUTES, null);
         //Log.d("Database Operations", "One row inserted");
     }
 
@@ -151,19 +203,40 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
 
 
-    public  Cursor getemLeaderboard(SQLiteDatabase db){
+    public  Cursor getemLeaderboard(Context context, SQLiteDatabase db){
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
+        this.ctx = context;
 
-        Cursor c = db.query(TableInfo.TABLE_EM, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
+        sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+        Cursor c = db.query(TableInfo.TABLE_EM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");;
+
+        if (Questions == 20)
+            c = db.query(TableInfo.TABLE_EM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
+        else if (Questions == 10)
+            c = db.query(TableInfo.TABLE_EM10, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
+        else
+            c = db.query(TableInfo.TABLE_EM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
+
         return c;
 
     }
-    public  Cursor getmmLeaderboard(SQLiteDatabase db){
+    public  Cursor getmmLeaderboard(Context context, SQLiteDatabase db){
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
+        this.ctx = context;
 
-        Cursor c = db.query(TableInfo.TABLE_MM, null, null, null, null, null, TableInfo.LB_SCORE + " DESC", "5");
+        sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+        Cursor c = db.query(TableInfo.TABLE_EM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");;
+
+        if (Questions == 20)
+            c = db.query(TableInfo.TABLE_MM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
+        else if (Questions == 10)
+            c = db.query(TableInfo.TABLE_MM10, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
+        else
+            c = db.query(TableInfo.TABLE_MM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         return c;
 
     }
@@ -171,7 +244,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         String[] columns = {TableInfo.LB_RANK, TableInfo.LB_SCORE, TableInfo.LB_TIME};
 
-        Cursor c = db.query(TableInfo.TABLE_HM, null, null, null, null, null, TableInfo.LB_SCORE + " DESC", "5");
+        Cursor c = db.query(TableInfo.TABLE_HM, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         return c;
 
     }

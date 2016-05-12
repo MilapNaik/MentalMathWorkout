@@ -73,7 +73,7 @@ public class SeqPractice extends AppCompatActivity {
             String line;
 
             /*read in file to array*/
-            for (i = 0; i < 80; i++) {
+            for (i = 0; i < 100; i++) {
                 mathTest[i] = new Question();
                 if ((line = reader.readLine()) != null)
                     mathTest[i].setQuestion(line); //Enter in problem
