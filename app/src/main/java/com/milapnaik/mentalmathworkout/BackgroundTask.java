@@ -34,7 +34,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
         String method = params[0];
         DatabaseOperations dbops = new DatabaseOperations(ctx);
 
-        if (method.equals("add_eminfo")){
+        if (method.equals("add_eminfo")){ //Add Easy Math information
             String rank = params[1];
             String score = params[2];
             String time = params[3];
@@ -46,7 +46,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             return "High Score added";
 
         }
-        else if (method.equals("add_mminfo")){
+        else if (method.equals("add_mminfo")){ //Add Medium Math information
             String rank = params[1];
             String score = params[2];
             String time = params[3];
@@ -58,7 +58,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             return "High Score added";
 
         }
-        else if (method.equals("add_hminfo")){
+        else if (method.equals("add_hminfo")){ //Add Hard Math information
             String rank = params[1];
             String score = params[2];
             String time = params[3];
@@ -67,6 +67,42 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
 
             SQLiteDatabase db = dbops.getWritableDatabase();
             dbops.addhmLeaderboard(db, rank, scoreint, time);
+            return "High Score added";
+
+        }
+        else if (method.equals("add_esinfo")){ //Add Easy Sequence information
+            String rank = params[1];
+            String score = params[2];
+            String time = params[3];
+
+            int scoreint = Integer.parseInt(score);
+
+            SQLiteDatabase db = dbops.getWritableDatabase();
+            dbops.addesLeaderboard(db, rank, scoreint, time);
+            return "High Score added";
+
+        }
+        else if (method.equals("add_msinfo")){ //Add Medium Sequence information
+            String rank = params[1];
+            String score = params[2];
+            String time = params[3];
+
+            int scoreint = Integer.parseInt(score);
+
+            SQLiteDatabase db = dbops.getWritableDatabase();
+            dbops.addmsLeaderboard(db, rank, scoreint, time);
+            return "High Score added";
+
+        }
+        else if (method.equals("add_hsinfo")){ //Add Hard Sequence information
+            String rank = params[1];
+            String score = params[2];
+            String time = params[3];
+
+            int scoreint = Integer.parseInt(score);
+
+            SQLiteDatabase db = dbops.getWritableDatabase();
+            dbops.addhsLeaderboard(db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -125,6 +161,81 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
 
             SQLiteDatabase db = dbops.getReadableDatabase();
             Cursor Leaderboard = dbops.gethmLeaderboard(db);
+
+            lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
+
+            String rank, time;
+            int score;
+            int row = 1;
+            String rownumber = Integer.toString(row);
+
+            while(Leaderboard.moveToNext()){
+                rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
+                score = Leaderboard.getInt(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
+                time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
+                LB leaderboard = new LB(rownumber, score, time);
+                row = Integer.parseInt(rownumber);
+                row++;
+                rownumber = Integer.toString(row);
+                publishProgress(leaderboard);
+            }
+            return "get_info";
+        }
+        else if (method.equals("get_esinfo")){
+            listView = (ListView) activity.findViewById(R.id.display_listview);
+
+            SQLiteDatabase db = dbops.getReadableDatabase();
+            Cursor Leaderboard = dbops.getesLeaderboard(db);
+
+            lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
+
+            String rank, time;
+            int score;
+            int row = 1;
+            String rownumber = Integer.toString(row);
+
+            while(Leaderboard.moveToNext()){
+                rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
+                score = Leaderboard.getInt(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
+                time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
+                LB leaderboard = new LB(rownumber, score, time);
+                row = Integer.parseInt(rownumber);
+                row++;
+                rownumber = Integer.toString(row);
+                publishProgress(leaderboard);
+            }
+            return "get_info";
+        }
+        else if (method.equals("get_msinfo")){
+            listView = (ListView) activity.findViewById(R.id.display_listview);
+
+            SQLiteDatabase db = dbops.getReadableDatabase();
+            Cursor Leaderboard = dbops.getmsLeaderboard(db);
+
+            lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
+
+            String rank, time;
+            int score;
+            int row = 1;
+            String rownumber = Integer.toString(row);
+
+            while(Leaderboard.moveToNext()){
+                rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
+                score = Leaderboard.getInt(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
+                time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
+                LB leaderboard = new LB(rownumber, score, time);
+                row = Integer.parseInt(rownumber);
+                row++;
+                rownumber = Integer.toString(row);
+                publishProgress(leaderboard);
+            }
+            return "get_info";
+        }
+        else if (method.equals("get_hsinfo")){
+            listView = (ListView) activity.findViewById(R.id.display_listview);
+
+            SQLiteDatabase db = dbops.getReadableDatabase();
+            Cursor Leaderboard = dbops.gethsLeaderboard(db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 

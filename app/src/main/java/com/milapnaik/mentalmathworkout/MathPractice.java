@@ -46,9 +46,9 @@ public class MathPractice extends AppCompatActivity {
 
 
         //Styling for the question and answer text
-        mathProblem.setTextSize(25);
+        mathProblem.setTextSize(22);
         mathProblem.setTextColor(Color.WHITE);
-        mathAnswer.setTextSize(25);
+        mathAnswer.setTextSize(22);
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -272,6 +272,7 @@ public class MathPractice extends AppCompatActivity {
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
                     extras.putString("NUM_CORRECT", count);
+                    extras.putString("TEST_TYPE","Math");
                     intent.putExtras(extras);
                     startActivity(intent);
                     finish();

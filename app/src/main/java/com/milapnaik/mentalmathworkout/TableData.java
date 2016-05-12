@@ -18,9 +18,13 @@ public class TableData {
         public static final String LB_TIME = "LB_TIME";
 
         public static final String DATABASE_NAME = "HIGH_SCORES";
-        public static final String TABLE_NAME = "EASY_MATH";
-        public static final String TABLE_NAME2 = "MEDIUM_MATH";
-        public static final String TABLE_NAME3 = "HARD_MATH";
+        public static final String TABLE_EM = "EASY_MATH";
+        public static final String TABLE_MM = "MEDIUM_MATH";
+        public static final String TABLE_HM = "HARD_MATH";
+
+        public static final String TABLE_ES = "EASY_SEQ";
+        public static final String TABLE_MS = "MEDIUM_SEQ";
+        public static final String TABLE_HS = "HARD_SEQ";
 
     }
 }

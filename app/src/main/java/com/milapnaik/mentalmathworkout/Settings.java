@@ -142,4 +142,9 @@ public class Settings extends AppCompatActivity {
                 "Set to " + n + " questions",
                 Toast.LENGTH_SHORT).show();
     }
+
+    public void mainmenu(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

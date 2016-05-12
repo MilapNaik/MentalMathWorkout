@@ -46,9 +46,9 @@ public class SeqPractice extends AppCompatActivity {
 
 
         //Styling for the question and answer text
-        mathProblem.setTextSize(25);
+        mathProblem.setTextSize(22);
         mathProblem.setTextColor(Color.WHITE);
-        mathAnswer.setTextSize(25);
+        mathAnswer.setTextSize(22);
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -62,11 +62,11 @@ public class SeqPractice extends AppCompatActivity {
 
             InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
             if (Difficulty.equals("Hard")) {
-                is = this.getResources().openRawResource(R.raw.hardmath);
+                is = this.getResources().openRawResource(R.raw.hardseq);
             } else if (Difficulty.equals("Medium")) {
-                is = this.getResources().openRawResource(R.raw.mediummath);
+                is = this.getResources().openRawResource(R.raw.mediumseq);
             } else {
-                is = this.getResources().openRawResource(R.raw.easymath);
+                is = this.getResources().openRawResource(R.raw.easyseq);
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -274,6 +274,7 @@ public class SeqPractice extends AppCompatActivity {
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
                     extras.putString("NUM_CORRECT", count);
+                    extras.putString("TEST_TYPE","Seq");
                     intent.putExtras(extras);
                     startActivity(intent);
                     finish();

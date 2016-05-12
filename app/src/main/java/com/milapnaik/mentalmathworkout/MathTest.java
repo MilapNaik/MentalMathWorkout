@@ -34,7 +34,7 @@ public class MathTest extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
-
+    public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
 
 
 
@@ -49,9 +49,9 @@ public class MathTest extends AppCompatActivity {
 
 
         //Styling for the question and answer text
-        mathProblem.setTextSize(25);
+        mathProblem.setTextSize(22);
         mathProblem.setTextColor(Color.WHITE);
-        mathAnswer.setTextSize(25);
+        mathAnswer.setTextSize(22);
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -254,6 +254,7 @@ public class MathTest extends AppCompatActivity {
                 }
                 i++;
 
+                /*Check question number, if test is done then move onto next screen*/
                 if (i < n) {
                     qcount++;
                     qCount.setText(qcount + "/" + n);
@@ -276,6 +277,7 @@ public class MathTest extends AppCompatActivity {
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
                     extras.putString("NUM_CORRECT",count);
+                    extras.putString("TEST_TYPE","Math");
                     intent.putExtras(extras);
                     startActivity(intent);
                     finish();

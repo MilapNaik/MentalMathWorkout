@@ -36,10 +36,20 @@ public class CountDown extends AppCompatActivity{
         test.setTextColor(Color.rgb(25, 4, 4));
 
         if (mathorseq.equals("Seqtest")) {
-            test.setText("Sequence Test");
+            if(testorpractice.equals("Test")) {
+                test.setText("Sequence Test");
+            }
+            else {
+                test.setText("Sequence Practice");
+            }
         }
         else{
-            test.setText("Math Test");
+            if(testorpractice.equals("Test")) {
+                test.setText("Math Test");
+            }
+            else {
+                test.setText("Math Practice");
+            }
 
         }
 

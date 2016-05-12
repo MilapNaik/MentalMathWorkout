@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import android.graphics.Color;
 
@@ -15,6 +16,7 @@ import android.graphics.Color;
 public class FinishTest extends AppCompatActivity{
     public String correct = "0";
     public String timed = "0";
+    public String test_type = "";
     String rank = "1";
     String Difficulty;
     public static final String MyPREFERENCES = "MyPrefs" ;
@@ -30,6 +32,7 @@ public class FinishTest extends AppCompatActivity{
         Bundle extras = intent.getExtras();
         correct = extras.getString("NUM_CORRECT");
         timed = extras.getString("TIMER");
+        test_type = extras.getString("TEST_TYPE");
 
         TextView numcorrect = (TextView) findViewById(R.id.correct_count);
         numcorrect.setTextColor(Color.WHITE);
@@ -45,19 +48,36 @@ public class FinishTest extends AppCompatActivity{
         // Find what difficulty from the preferences
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
-        // Add to leaderboard
-        if (Difficulty.equals("Hard")){
-            BackgroundTask backgroundTask = new BackgroundTask(this);
-            backgroundTask.execute("add_hminfo", rank, correct, timed);
-        }
-        else if (Difficulty.equals("Medium")){
-            BackgroundTask backgroundTask = new BackgroundTask(this);
-            backgroundTask.execute("add_mminfo", rank, correct, timed);
+
+
+        // Add to specific leaderboard
+        if (test_type.equals("Seq")){
+            if (Difficulty.equals("Hard")) {
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute("add_hsinfo", rank, correct, timed);
+            } else if (Difficulty.equals("Medium")) {
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute("add_msinfo", rank, correct, timed);
+            } else {
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute("add_esinfo", rank, correct, timed);
+            }
+
         }
         else {
-            BackgroundTask backgroundTask = new BackgroundTask(this);
-            backgroundTask.execute("add_eminfo", rank, correct, timed);
+            if (Difficulty.equals("Hard")) {
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute("add_hminfo", rank, correct, timed);
+            } else if (Difficulty.equals("Medium")) {
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute("add_mminfo", rank, correct, timed);
+            } else {
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute("add_eminfo", rank, correct, timed);
+            }
         }
+
+
         // Show top 5 scores
         if (Difficulty.equals("Hard")){
             BackgroundTask backgroundTask = new BackgroundTask(ctx);
@@ -71,5 +91,10 @@ public class FinishTest extends AppCompatActivity{
             BackgroundTask backgroundTask = new BackgroundTask(ctx);
             backgroundTask.execute("get_eminfo");
         }
+    }
+
+    public void mainmenu(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
