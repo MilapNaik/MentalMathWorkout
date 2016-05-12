@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.CountDownTimer;
 import android.widget.TextView;
+import android.view.KeyEvent;
 
 /**
  * Created by MilapNaik on 5/2/16.
@@ -97,12 +98,20 @@ public class CountDown extends AppCompatActivity{
             }
         }.start();
 
+
     }
+
 
     // Kill activity if countdown starts but back button is pressed
     @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        this.finish();
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+
+            countDownTimer.cancel();
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
