@@ -265,8 +265,6 @@ public class MathPractice extends AppCompatActivity {
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
-                    //String sectime = Integer.toString(seconds);
-                    //String milsectime = Integer.toString(millis);
                     String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
                     Intent intent = new Intent(MathPractice.this, FinishTest.class);
                     String count = Integer.toString(correctcount);

@@ -23,11 +23,13 @@ public class MathTest extends AppCompatActivity {
 
     int i = 0;
     int correctcount = 0;
+
     Question[] mathTest = new Question[80];
-    final int n = 80;
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     String Difficulty;
+    int qcount = 1;
+    final int n = 80;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
@@ -250,10 +252,12 @@ public class MathTest extends AppCompatActivity {
                     mathAnswer.setText("");
 
                 }
+                i++;
+
                 if (i < n) {
+                    qcount++;
+                    qCount.setText(qcount + "/" + n);
                     mathProblem.setText(mathTest[i].problem);
-                    i++;
-                    qCount.setText(i+1 + "/" + n);
                 }
 
                 if (i  >= n ) {
@@ -265,7 +269,7 @@ public class MathTest extends AppCompatActivity {
                     int millis = (int) mTotalTime % 1000;
                     String sectime = Integer.toString(seconds);
                     String milsectime = Integer.toString(millis);
-                    String time = minutes + ":" + sectime + "." + milsectime;
+                    String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
                     Intent intent = new Intent(MathTest.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 

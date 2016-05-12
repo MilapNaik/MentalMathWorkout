@@ -15,17 +15,17 @@ import com.milapnaik.mentalmathworkout.TableData.TableInfo;
 public class DatabaseOperations extends SQLiteOpenHelper {
 
     Context ctx;
-    public static final int database_version = 2;
+    public static final int database_version = 1;
     public String CREATE_QUERY = "CREATE TABLE " + TableInfo.TABLE_NAME + "("
-            + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
-            " TEXT );";
+            + TableInfo.LB_RANK + " INT, " + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
     public String CREATE_QUERY2 = "CREATE TABLE " + TableInfo.TABLE_NAME2 + "("
-            + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
-            " TEXT );";
+            + TableInfo.LB_RANK + " INT, " + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
     public String CREATE_QUERY3 = "CREATE TABLE " + TableInfo.TABLE_NAME3 + "("
-            + TableInfo.LB_RANK + " TEXT," + TableInfo.LB_SCORE + " TEXT,"+ TableInfo.LB_TIME +
-            " TEXT );";
-    public String DROP_QUERY = "DROP TABLE " + TableInfo.TABLE_NAME + ";";
+            + TableInfo.LB_RANK + " INT, " + TableInfo.LB_SCORE +
+            " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
+    public String DROP_QUERY = "DELETE DATABASE " + TableInfo.DATABASE_NAME + ";";
 
 
     public DatabaseOperations(Context context){
@@ -44,40 +44,37 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sdb, int arg1, int arg2){
-        sdb.execSQL(DROP_QUERY);
+        ctx.deleteDatabase(TableInfo.DATABASE_NAME);
         sdb.execSQL(CREATE_QUERY);
         sdb.execSQL(CREATE_QUERY2);
         sdb.execSQL(CREATE_QUERY3);
 
     }
 
-    public void addemLeaderboard(SQLiteDatabase db,String rank, String score, String time){
+    public void addemLeaderboard(SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
 
-        cv.put(TableInfo.LB_RANK, rank);
         cv.put(TableInfo.LB_SCORE, score);
         cv.put(TableInfo.LB_TIME, time);
 
         db.insert(TableInfo.TABLE_NAME, null, cv);
         //Log.d("Database Operations", "One row inserted");
     }
-    public void addmmLeaderboard(SQLiteDatabase db,String rank, String score, String time){
+    public void addmmLeaderboard(SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
 
-        cv.put(TableInfo.LB_RANK, rank);
         cv.put(TableInfo.LB_SCORE, score);
         cv.put(TableInfo.LB_TIME, time);
 
         db.insert(TableInfo.TABLE_NAME2, null, cv);
         //Log.d("Database Operations", "One row inserted");
     }
-    public void addhmLeaderboard(SQLiteDatabase db,String rank, String score, String time){
+    public void addhmLeaderboard(SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
 
-        cv.put(TableInfo.LB_RANK, rank);
         cv.put(TableInfo.LB_SCORE, score);
         cv.put(TableInfo.LB_TIME, time);
 

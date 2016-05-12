@@ -25,20 +25,19 @@ import java.util.Random;
  * Created by MilapNaik on 5/5/16.
  */
 public class SeqTest extends AppCompatActivity {
-
     int i = 0;
     int correctcount = 0;
+
     Question[] mathTest = new Question[80];
-    final int n = 80;
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     String Difficulty;
+    int qcount = 1;
+    final int n = 50;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
-
-
 
 
     @Override
@@ -64,21 +63,19 @@ public class SeqTest extends AppCompatActivity {
         try {
 
             InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
-            if( Difficulty.equals("Hard")) {
+            if (Difficulty.equals("Hard")) {
                 is = this.getResources().openRawResource(R.raw.hardmath);
-            }
-            else if ( Difficulty.equals("Medium")) {
+            } else if (Difficulty.equals("Medium")) {
                 is = this.getResources().openRawResource(R.raw.mediummath);
-            }
-            else {
-                is = this.getResources().openRawResource(R.raw.easymath);
+            } else {
+                is = this.getResources().openRawResource(R.raw.easyseq);
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
 
             /*read in file to array*/
-            for (i = 0; i < 80; i++) {
+            for (i = 0; i < 50; i++) {
                 mathTest[i] = new Question();
                 if ((line = reader.readLine()) != null)
                     mathTest[i].setQuestion(line); //Enter in problem
@@ -95,7 +92,7 @@ public class SeqTest extends AppCompatActivity {
         i = 0;
 
         mathProblem.setText(mathTest[i].problem);
-        qCount.setText(i+1 + "/" + n);
+        qCount.setText(qcount + "/" + n);
         mStartTime = System.currentTimeMillis();
 
         Button n1Button = (Button) findViewById(R.id.n1);
@@ -250,39 +247,40 @@ public class SeqTest extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(SeqTest.this,
-                            correctAnswer,
+                            "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
-
                 }
+                i++;
+
                 if (i < n) {
+                    qcount++;
+                    qCount.setText(qcount + "/" + n);
                     mathProblem.setText(mathTest[i].problem);
-                    i++;
-                    qCount.setText(i+1 + "/" + n);
                 }
 
-                if (i  >= n ) {
+
+                if (i >= n) {
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
                     int seconds = (int) (mTotalTime / 1000);
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
-                    String sectime = Integer.toString(seconds);
-                    String milsectime = Integer.toString(millis);
-                    String time = minutes + ":" + sectime + "." + milsectime;
+                    //String sectime = Integer.toString(seconds);
+                    //String milsectime = Integer.toString(millis);
+                    String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
                     Intent intent = new Intent(SeqTest.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
-                    extras.putString("NUM_CORRECT",count);
+                    extras.putString("NUM_CORRECT", count);
                     intent.putExtras(extras);
                     startActivity(intent);
                     finish();
                 }
             }
-
         });
     }
 

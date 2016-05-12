@@ -54,7 +54,7 @@ public class LB_Adapter extends ArrayAdapter {
         }
         LB leaderboard = (LB) getItem(position);
         lbholder.lb_rank.setText(leaderboard.getRank().toString());
-        lbholder.lb_score.setText(leaderboard.getScore().toString());
+        lbholder.lb_score.setText(Integer.toString(leaderboard.getScore()));
         lbholder.lb_time.setText(leaderboard.getTime().toString());
 
         return row;

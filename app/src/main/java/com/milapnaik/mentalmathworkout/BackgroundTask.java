@@ -39,8 +39,10 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             String score = params[2];
             String time = params[3];
 
+            int scoreint = Integer.parseInt(score);
+
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addemLeaderboard(db, rank, score, time);
+            dbops.addemLeaderboard(db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -49,8 +51,10 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             String score = params[2];
             String time = params[3];
 
+            int scoreint = Integer.parseInt(score);
+
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addmmLeaderboard(db, rank, score, time);
+            dbops.addmmLeaderboard(db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -59,8 +63,10 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             String score = params[2];
             String time = params[3];
 
+            int scoreint = Integer.parseInt(score);
+
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addhmLeaderboard(db, rank, score, time);
+            dbops.addhmLeaderboard(db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -72,13 +78,19 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
-            String rank, score, time;
+            String rank, time;
+            int score;
+            int row = 1;
+            String rownumber = Integer.toString(row);
 
             while(Leaderboard.moveToNext()){
                 rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
-                score = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
+                score = Leaderboard.getInt(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
                 time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
-                LB leaderboard = new LB(rank, score, time);
+                LB leaderboard = new LB(rownumber, score, time);
+                row = Integer.parseInt(rownumber);
+                row++;
+                rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
                 return "get_info";
@@ -91,13 +103,19 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
-            String rank, score, time;
+            String rank, time;
+            int score;
+            int row = 1;
+            String rownumber = Integer.toString(row);
 
             while(Leaderboard.moveToNext()){
                 rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
-                score = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
+                score = Leaderboard.getInt(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
                 time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
-                LB leaderboard = new LB(rank, score, time);
+                LB leaderboard = new LB(rownumber, score, time);
+                row = Integer.parseInt(rownumber);
+                row++;
+                rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
             return "get_info";
@@ -110,13 +128,19 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
-            String rank, score, time;
+            String rank, time;
+            int score;
+            int row = 1;
+            String rownumber = Integer.toString(row);
 
             while(Leaderboard.moveToNext()){
                 rank = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_RANK));
-                score = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
+                score = Leaderboard.getInt(Leaderboard.getColumnIndex(TableData.TableInfo.LB_SCORE));
                 time = Leaderboard.getString(Leaderboard.getColumnIndex(TableData.TableInfo.LB_TIME));
-                LB leaderboard = new LB(rank, score, time);
+                LB leaderboard = new LB(rownumber, score, time);
+                row = Integer.parseInt(rownumber);
+                row++;
+                rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
             return "get_info";
