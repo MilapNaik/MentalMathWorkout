@@ -66,7 +66,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             int scoreint = Integer.parseInt(score);
 
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addhmLeaderboard(db, rank, scoreint, time);
+            dbops.addhmLeaderboard(ctx, db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -78,7 +78,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             int scoreint = Integer.parseInt(score);
 
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addesLeaderboard(db, rank, scoreint, time);
+            dbops.addesLeaderboard(ctx, db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -90,7 +90,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             int scoreint = Integer.parseInt(score);
 
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addmsLeaderboard(db, rank, scoreint, time);
+            dbops.addmsLeaderboard(ctx, db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -102,7 +102,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             int scoreint = Integer.parseInt(score);
 
             SQLiteDatabase db = dbops.getWritableDatabase();
-            dbops.addhsLeaderboard(db, rank, scoreint, time);
+            dbops.addhsLeaderboard(ctx, db, rank, scoreint, time);
             return "High Score added";
 
         }
@@ -129,7 +129,8 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
                 rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
-                return "get_info";
+            db.close();
+            return "get_info";
         }
         else if (method.equals("get_mminfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
@@ -154,13 +155,14 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
                 rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
+            db.close();
             return "get_info";
         }
         else if (method.equals("get_hminfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
             SQLiteDatabase db = dbops.getReadableDatabase();
-            Cursor Leaderboard = dbops.gethmLeaderboard(db);
+            Cursor Leaderboard = dbops.gethmLeaderboard(ctx, db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
@@ -179,13 +181,14 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
                 rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
+            db.close();
             return "get_info";
         }
         else if (method.equals("get_esinfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
             SQLiteDatabase db = dbops.getReadableDatabase();
-            Cursor Leaderboard = dbops.getesLeaderboard(db);
+            Cursor Leaderboard = dbops.getesLeaderboard(ctx, db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
@@ -204,13 +207,14 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
                 rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
+            db.close();
             return "get_info";
         }
         else if (method.equals("get_msinfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
             SQLiteDatabase db = dbops.getReadableDatabase();
-            Cursor Leaderboard = dbops.getmsLeaderboard(db);
+            Cursor Leaderboard = dbops.getmsLeaderboard(ctx, db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
@@ -229,13 +233,14 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
                 rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
+            db.close();
             return "get_info";
         }
         else if (method.equals("get_hsinfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
             SQLiteDatabase db = dbops.getReadableDatabase();
-            Cursor Leaderboard = dbops.gethsLeaderboard(db);
+            Cursor Leaderboard = dbops.gethsLeaderboard(ctx, db);
 
             lbAdapter = new LB_Adapter(ctx, R.layout.display_leaderboard_row);
 
@@ -254,11 +259,12 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
                 rownumber = Integer.toString(row);
                 publishProgress(leaderboard);
             }
+            db.close();
             return "get_info";
         }
 
 
-
+        dbops.close();
         return null;
     }
 

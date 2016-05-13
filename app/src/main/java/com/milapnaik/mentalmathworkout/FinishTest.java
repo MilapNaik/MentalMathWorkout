@@ -89,17 +89,30 @@ public class FinishTest extends AppCompatActivity{
 
 
         // Show top 5 scores
-        if (Difficulty.equals("Hard")){
-            BackgroundTask backgroundTask = new BackgroundTask(ctx);
-            backgroundTask.execute("get_hminfo");
-        }
-        else if (Difficulty.equals("Medium")){
-            BackgroundTask backgroundTask = new BackgroundTask(ctx);
-            backgroundTask.execute("get_mminfo");
+        if (test_type.equals("Seq")) {
+            if (Difficulty.equals("Hard")) {
+                BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                backgroundTask.execute("get_hsinfo");
+            } else if (Difficulty.equals("Medium")) {
+                BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                backgroundTask.execute("get_msinfo");
+            } else {
+                BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                backgroundTask.execute("get_esinfo");
+            }
         }
         else {
-            BackgroundTask backgroundTask = new BackgroundTask(ctx);
-            backgroundTask.execute("get_eminfo");
+            if (Difficulty.equals("Hard")) {
+                BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                backgroundTask.execute("get_hminfo");
+            } else if (Difficulty.equals("Medium")) {
+                BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                backgroundTask.execute("get_mminfo");
+            } else {
+                BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                backgroundTask.execute("get_eminfo");
+            }
+
         }
     }
 

@@ -35,7 +35,7 @@ public class MathTest extends AppCompatActivity {
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
-
+    public final static String Practortest = "com.milapnaik.mentalmathworkout.MESSAGE";
 
 
     @Override
@@ -279,6 +279,12 @@ public class MathTest extends AppCompatActivity {
                     extras.putString("NUM_CORRECT",count);
                     extras.putString("TEST_TYPE","Math");
                     intent.putExtras(extras);
+
+                    SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preference.edit();
+                    editor.putString("Practortest", "Test");
+                    editor.commit();
+
                     startActivity(intent);
                     finish();
                 }

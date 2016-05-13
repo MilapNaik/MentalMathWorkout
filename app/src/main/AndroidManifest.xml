@@ -105,7 +105,7 @@
         </activity>
 
         <activity
-            android:name=".FinishTest"
+            android:name=".SeqPractice"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -114,6 +114,14 @@
         </activity>
 
 
-    </application>
+        <activity
+            android:name=".FinishTest"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+        </activity>
 
+    </application>
 </manifest>

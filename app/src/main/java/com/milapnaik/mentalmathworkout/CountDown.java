@@ -71,7 +71,7 @@ public class CountDown extends AppCompatActivity{
                         finish();
                     }
                     else{
-                        Intent intent = new Intent(CountDown.this, SeqTest.class);
+                        Intent intent = new Intent(CountDown.this, SeqPractice.class);
                         startActivity(intent); //Start Sequence practice
                         finish();
                     }
