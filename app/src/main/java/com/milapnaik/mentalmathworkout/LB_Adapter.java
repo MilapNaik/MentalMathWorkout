@@ -13,8 +13,8 @@ import android.widget.TextView;
 /**
  * Created by MilapNaik on 5/10/16.
  */
-public class LB_Adapter extends ArrayAdapter {
-    List list = new ArrayList();
+public class LB_Adapter extends ArrayAdapter<LB> {
+    List<LB> list = new ArrayList<>();
 
     public LB_Adapter(Context context, int resource){
         super(context, resource);
@@ -31,7 +31,7 @@ public class LB_Adapter extends ArrayAdapter {
     }
 
     @Override
-    public Object getItem(int position){
+    public LB getItem(int position){
         return list.get(position);
     }
 
