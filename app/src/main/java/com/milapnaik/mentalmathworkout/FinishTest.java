@@ -50,7 +50,7 @@ public class FinishTest extends AppCompatActivity{
         TextView numcorrect = (TextView) findViewById(R.id.correct_count);
         numcorrect.setTextColor(Color.WHITE);
         numcorrect.setTextSize(25);
-        numcorrect.setText(correct + " questions correct");
+        numcorrect.setText("Correct answers: " + correct);
 
         TextView time = (TextView) findViewById(R.id.time);
         time.setTextColor(Color.WHITE);

@@ -58,12 +58,46 @@
         android:layout_below="@id/correct_count"
         android:layout_marginTop="10dp"/>
 
+    <LinearLayout
+        android:id="@+id/columnheaders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Rank"
+            android:textColor="@color/black"
+            android:id="@+id/rowid" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Score"
+            android:textColor="@color/black"
+            android:id="@+id/scoreid" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Time"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:id="@+id/timeid" />
+    </LinearLayout>
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/display_listview"
-        android:layout_below="@+id/time"
-        android:layout_marginTop="10dp"/>
+        android:layout_below="@+id/columnheaders"
+        android:layout_marginTop="7dp"/>
+
+
 
 
 </RelativeLayout>
