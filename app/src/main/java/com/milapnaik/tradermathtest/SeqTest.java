@@ -277,7 +277,7 @@ public class SeqTest extends AppCompatActivity {
 
                     SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    editor.putString("Practortest", "Test");
+                    editor.putBoolean("Test", true);
                     editor.commit();
                     startActivity(intent);
                     finish();

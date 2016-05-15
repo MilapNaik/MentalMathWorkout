@@ -20,6 +20,7 @@ public class FinishTest extends AppCompatActivity{
     String rank = "1";
     String Difficulty;
     int Questions;
+    Boolean isTest;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
 
@@ -34,7 +35,7 @@ public class FinishTest extends AppCompatActivity{
         Bundle extras = intent.getExtras();
         correct = extras.getString("NUM_CORRECT");
         timed = extras.getString("TIMER");
-        test_type = extras.getString("TEST_TYPE");
+        test_type = extras.getString("TEST_TYPE"); //Math or Seq
 
         // Find what difficulty from the preferences
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -42,10 +43,42 @@ public class FinishTest extends AppCompatActivity{
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
 
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        isTest = sharedpreferences.getBoolean("Test", false);
+
+        TextView test = (TextView) findViewById(R.id.test);
+        test.setTextColor(Color.BLACK);
+        test.setTextSize(32);
+
+        if (isTest == true){
+            if (test_type.equals("Seq")) {
+                Questions = 50;
+                test.setText("Sequence Test");
+            }
+            else {
+                Questions = 80;
+                test.setText("Math Test");
+            }
+        }
+        else{
+            if (test_type.equals("Seq")) {
+                test.setText("Sequence Practice");
+            }
+            else {
+                test.setText("Math Practice");
+            }
+        }
+
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putBoolean("Test", false);
+        editor.commit();
+
+
+
         TextView leaderboard = (TextView) findViewById(R.id.leaderboard);
         leaderboard.setTextColor(Color.BLACK);
-        leaderboard.setTextSize(25);
-        leaderboard.setText(Questions + " " + Difficulty + " Leaderboard");
+        leaderboard.setTextSize(28);
+        leaderboard.setText(Questions + " " + Difficulty + " Questions");
 
         TextView numcorrect = (TextView) findViewById(R.id.correct_count);
         numcorrect.setTextColor(Color.WHITE);
@@ -62,6 +95,7 @@ public class FinishTest extends AppCompatActivity{
 
         // Add to specific leaderboard
         if (test_type.equals("Seq")){
+
             if (Difficulty.equals("Hard")) {
                 BackgroundTask backgroundTask = new BackgroundTask(this);
                 backgroundTask.execute("add_hsinfo", rank, correct, timed);

@@ -11,18 +11,6 @@
     android:background="@color/background">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Leaderboards"
-        android:textSize="32sp"
-        android:textColor="#000"
-        android:id="@+id/leaderboard"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp" />
-
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -40,6 +28,26 @@
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/test"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Leaderboard"
+        android:textSize="32sp"
+        android:textColor="#000"
+        android:id="@+id/leaderboard"
+        android:layout_below="@id/test"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/correct_count"
@@ -47,7 +55,7 @@
         android:background="@color/blackish"
         android:layout_below="@id/leaderboard"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="match_parent"
