@@ -1,4 +1,4 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * Created by MilapNaik on 3/18/16.
+ * Created by MilapNaik on 5/10/16.
  */
-public class MathTest extends AppCompatActivity {
+public class MathPractice extends AppCompatActivity {
 
     int i = 0;
     int correctcount = 0;
@@ -29,14 +29,11 @@ public class MathTest extends AppCompatActivity {
     String answer;
     String Difficulty;
     int qcount = 1;
-    final int n = 80;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
-    public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String Practortest = "com.milapnaik.mentalmathworkout.MESSAGE";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,19 +52,20 @@ public class MathTest extends AppCompatActivity {
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
         //Try to read the problem and answers text file
         try {
 
             InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
-            if( Difficulty.equals("Hard")) {
+            if (Difficulty.equals("Hard")) {
                 is = this.getResources().openRawResource(R.raw.hardmath);
-            }
-            else if ( Difficulty.equals("Medium")) {
+            } else if (Difficulty.equals("Medium")) {
                 is = this.getResources().openRawResource(R.raw.mediummath);
-            }
-            else {
+            } else {
                 is = this.getResources().openRawResource(R.raw.easymath);
             }
 
@@ -92,7 +90,7 @@ public class MathTest extends AppCompatActivity {
         i = 0;
 
         mathProblem.setText(mathTest[i].problem);
-        qCount.setText(i+1 + "/" + n);
+        qCount.setText(qcount + "/" + n);
         mStartTime = System.currentTimeMillis();
 
         Button n1Button = (Button) findViewById(R.id.n1);
@@ -241,55 +239,51 @@ public class MathTest extends AppCompatActivity {
                     correctcount++;
                     mathAnswer.setText("");
 
-                    Toast.makeText(MathTest.this,
+                    Toast.makeText(MathPractice.this,
                             R.string.correct_toast,
                             Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(MathTest.this,
-                            correctAnswer,
+                    Toast.makeText(MathPractice.this,
+                            "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
-
                 }
                 i++;
 
-                /*Check question number, if test is done then move onto next screen*/
                 if (i < n) {
                     qcount++;
                     qCount.setText(qcount + "/" + n);
                     mathProblem.setText(mathTest[i].problem);
                 }
 
-                if (i  >= n ) {
+
+                if (i >= n) {
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
                     int seconds = (int) (mTotalTime / 1000);
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
-                    String sectime = Integer.toString(seconds);
-                    String milsectime = Integer.toString(millis);
                     String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
-                    Intent intent = new Intent(MathTest.this, FinishTest.class);
+                    Intent intent = new Intent(MathPractice.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
-                    extras.putString("NUM_CORRECT",count);
+                    extras.putString("NUM_CORRECT", count);
                     extras.putString("TEST_TYPE","Math");
                     intent.putExtras(extras);
 
                     SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    editor.putString("Practortest", "Test");
+                    editor.putString("Practortest", "Practice");
                     editor.commit();
 
                     startActivity(intent);
                     finish();
                 }
             }
-
         });
     }
 
@@ -309,3 +303,4 @@ public class MathTest extends AppCompatActivity {
 
 
 }
+

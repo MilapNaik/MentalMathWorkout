@@ -1,4 +1,4 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.content.Intent;
 import android.os.Bundle;

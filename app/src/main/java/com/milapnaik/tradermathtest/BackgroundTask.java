@@ -1,4 +1,4 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

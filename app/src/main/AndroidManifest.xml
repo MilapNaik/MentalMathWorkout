@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.milapnaik.mentalmathworkout">
+    package="com.milapnaik.tradermathtest">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
 
 
         <activity
-            android:name=".Splash"
+            android:name="com.milapnaik.tradermathtest.Splash"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
@@ -30,97 +30,97 @@
         </activity>
 
         <activity
-            android:name=".Info"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.Info"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".Leaderboard"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.Leaderboard"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".Settings"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.Settings"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".CountDown"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.CountDown"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".PracticeOrTest"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.PracticeOrTest"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".MathTest"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.MathTest"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".MathPractice"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.MathPractice"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".SeqTest"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.SeqTest"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
         <activity
-            android:name=".SeqPractice"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.SeqPractice"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
 
         <activity
-            android:name=".FinishTest"
-            android:parentActivityName=".MainActivity"
+            android:name="com.milapnaik.tradermathtest.FinishTest"
+            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.mentalmathworkout.MainActivity" />
+                android:value="com.milapnaik.tradermathtest.MainActivity" />
         </activity>
 
     </application>

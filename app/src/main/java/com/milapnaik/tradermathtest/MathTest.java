@@ -1,38 +1,40 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+import android.graphics.Color;
 import android.widget.Toast;
-
+import android.widget.Button;
+import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Random;
 
 /**
- * Created by MilapNaik on 5/11/16.
+ * Created by MilapNaik on 3/18/16.
  */
-public class SeqPractice extends AppCompatActivity {
+public class MathTest extends AppCompatActivity {
+
     int i = 0;
     int correctcount = 0;
 
-    Question[] mathTest = new Question[50];
+    Question[] mathTest = new Question[80];
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     String Difficulty;
     int qcount = 1;
+    final int n = 80;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
+    public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String Practortest = "com.milapnaik.mentalmathworkout.MESSAGE";
 
 
@@ -53,27 +55,27 @@ public class SeqPractice extends AppCompatActivity {
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
         //Try to read the problem and answers text file
         try {
 
             InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
-            if (Difficulty.equals("Hard")) {
-                is = this.getResources().openRawResource(R.raw.hardseq);
-            } else if (Difficulty.equals("Medium")) {
-                is = this.getResources().openRawResource(R.raw.mediumseq);
-            } else {
-                is = this.getResources().openRawResource(R.raw.easyseq);
+            if( Difficulty.equals("Hard")) {
+                is = this.getResources().openRawResource(R.raw.hardmath);
+            }
+            else if ( Difficulty.equals("Medium")) {
+                is = this.getResources().openRawResource(R.raw.mediummath);
+            }
+            else {
+                is = this.getResources().openRawResource(R.raw.easymath);
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
 
             /*read in file to array*/
-            for (i = 0; i < 50; i++) {
+            for (i = 0; i < 80; i++) {
                 mathTest[i] = new Question();
                 if ((line = reader.readLine()) != null)
                     mathTest[i].setQuestion(line); //Enter in problem
@@ -90,7 +92,7 @@ public class SeqPractice extends AppCompatActivity {
         i = 0;
 
         mathProblem.setText(mathTest[i].problem);
-        qCount.setText(qcount + "/" + n);
+        qCount.setText(i+1 + "/" + n);
         mStartTime = System.currentTimeMillis();
 
         Button n1Button = (Button) findViewById(R.id.n1);
@@ -239,53 +241,55 @@ public class SeqPractice extends AppCompatActivity {
                     correctcount++;
                     mathAnswer.setText("");
 
-                    Toast.makeText(SeqPractice.this,
+                    Toast.makeText(MathTest.this,
                             R.string.correct_toast,
                             Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(SeqPractice.this,
-                            "Correct Answer: " + correctAnswer,
+                    Toast.makeText(MathTest.this,
+                            correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
+
                 }
                 i++;
 
+                /*Check question number, if test is done then move onto next screen*/
                 if (i < n) {
                     qcount++;
                     qCount.setText(qcount + "/" + n);
                     mathProblem.setText(mathTest[i].problem);
                 }
 
-
-                if (i >= n) {
+                if (i  >= n ) {
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;
                     int seconds = (int) (mTotalTime / 1000);
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
-                    //String sectime = Integer.toString(seconds);
-                    //String milsectime = Integer.toString(millis);
+                    String sectime = Integer.toString(seconds);
+                    String milsectime = Integer.toString(millis);
                     String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
-                    Intent intent = new Intent(SeqPractice.this, FinishTest.class);
+                    Intent intent = new Intent(MathTest.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
-                    extras.putString("NUM_CORRECT", count);
-                    extras.putString("TEST_TYPE","Seq");
+                    extras.putString("NUM_CORRECT",count);
+                    extras.putString("TEST_TYPE","Math");
                     intent.putExtras(extras);
 
                     SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    editor.putString("Practortest", "Practice");
+                    editor.putString("Practortest", "Test");
                     editor.commit();
 
                     startActivity(intent);
                     finish();
                 }
             }
+
         });
     }
 

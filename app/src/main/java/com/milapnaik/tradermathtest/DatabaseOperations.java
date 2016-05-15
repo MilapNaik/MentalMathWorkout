@@ -1,14 +1,13 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import android.database.Cursor;
 
-import com.milapnaik.mentalmathworkout.TableData.TableInfo;
+import com.milapnaik.tradermathtest.TableData.TableInfo;
 
 /**
  * Created by MilapNaik on 4/26/16.

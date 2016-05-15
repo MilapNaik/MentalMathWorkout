@@ -1,7 +1,5 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
-import android.app.ListActivity;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;

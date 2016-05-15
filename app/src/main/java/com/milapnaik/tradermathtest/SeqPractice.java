@@ -1,30 +1,26 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
-import android.graphics.Color;
-import android.widget.Toast;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.milapnaik.mentalmathworkout.FinishTest;
-import com.milapnaik.mentalmathworkout.Question;
-import com.milapnaik.mentalmathworkout.R;
-
-import java.io.InputStreamReader;
-import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 /**
- * Created by MilapNaik on 5/5/16.
+ * Created by MilapNaik on 5/11/16.
  */
-public class SeqTest extends AppCompatActivity {
+public class SeqPractice extends AppCompatActivity {
     int i = 0;
     int correctcount = 0;
 
@@ -33,12 +29,12 @@ public class SeqTest extends AppCompatActivity {
     String answer;
     String Difficulty;
     int qcount = 1;
-    final int n = 50;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TIMER = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String Practortest = "com.milapnaik.mentalmathworkout.MESSAGE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +53,8 @@ public class SeqTest extends AppCompatActivity {
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
+
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
         //Try to read the problem and answers text file
@@ -241,12 +239,12 @@ public class SeqTest extends AppCompatActivity {
                     correctcount++;
                     mathAnswer.setText("");
 
-                    Toast.makeText(SeqTest.this,
+                    Toast.makeText(SeqPractice.this,
                             R.string.correct_toast,
                             Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(SeqTest.this,
+                    Toast.makeText(SeqPractice.this,
                             "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
@@ -270,7 +268,7 @@ public class SeqTest extends AppCompatActivity {
                     //String sectime = Integer.toString(seconds);
                     //String milsectime = Integer.toString(millis);
                     String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
-                    Intent intent = new Intent(SeqTest.this, FinishTest.class);
+                    Intent intent = new Intent(SeqPractice.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
@@ -281,8 +279,9 @@ public class SeqTest extends AppCompatActivity {
 
                     SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    editor.putString("Practortest", "Test");
+                    editor.putString("Practortest", "Practice");
                     editor.commit();
+
                     startActivity(intent);
                     finish();
                 }
@@ -306,4 +305,3 @@ public class SeqTest extends AppCompatActivity {
 
 
 }
-

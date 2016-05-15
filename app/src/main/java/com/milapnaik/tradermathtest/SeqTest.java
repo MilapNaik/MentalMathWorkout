@@ -1,4 +1,4 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.graphics.Color;
 import android.widget.Toast;
 import android.widget.Button;
+
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.BufferedReader;
@@ -17,18 +18,18 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * Created by MilapNaik on 5/10/16.
+ * Created by MilapNaik on 5/5/16.
  */
-public class MathPractice extends AppCompatActivity {
-
+public class SeqTest extends AppCompatActivity {
     int i = 0;
     int correctcount = 0;
 
-    Question[] mathTest = new Question[80];
+    Question[] mathTest = new Question[50];
     long mStartTime, mEndTime, mTotalTime;
     String answer;
     String Difficulty;
     int qcount = 1;
+    final int n = 50;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public final static String NUM_CORRECT = "com.milapnaik.mentalmathworkout.MESSAGE";
@@ -52,9 +53,6 @@ public class MathPractice extends AppCompatActivity {
         mathAnswer.setTextColor(Color.WHITE);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        final int n = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
         //Try to read the problem and answers text file
@@ -62,18 +60,18 @@ public class MathPractice extends AppCompatActivity {
 
             InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
             if (Difficulty.equals("Hard")) {
-                is = this.getResources().openRawResource(R.raw.hardmath);
+                is = this.getResources().openRawResource(R.raw.hardseq);
             } else if (Difficulty.equals("Medium")) {
-                is = this.getResources().openRawResource(R.raw.mediummath);
+                is = this.getResources().openRawResource(R.raw.mediumseq);
             } else {
-                is = this.getResources().openRawResource(R.raw.easymath);
+                is = this.getResources().openRawResource(R.raw.easyseq);
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
 
             /*read in file to array*/
-            for (i = 0; i < 80; i++) {
+            for (i = 0; i < 50; i++) {
                 mathTest[i] = new Question();
                 if ((line = reader.readLine()) != null)
                     mathTest[i].setQuestion(line); //Enter in problem
@@ -239,12 +237,12 @@ public class MathPractice extends AppCompatActivity {
                     correctcount++;
                     mathAnswer.setText("");
 
-                    Toast.makeText(MathPractice.this,
+                    Toast.makeText(SeqTest.this,
                             R.string.correct_toast,
                             Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(MathPractice.this,
+                    Toast.makeText(SeqTest.this,
                             "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
@@ -265,21 +263,22 @@ public class MathPractice extends AppCompatActivity {
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
+                    //String sectime = Integer.toString(seconds);
+                    //String milsectime = Integer.toString(millis);
                     String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
-                    Intent intent = new Intent(MathPractice.this, FinishTest.class);
+                    Intent intent = new Intent(SeqTest.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
 
                     Bundle extras = new Bundle();
                     extras.putString("TIMER", time);
                     extras.putString("NUM_CORRECT", count);
-                    extras.putString("TEST_TYPE","Math");
+                    extras.putString("TEST_TYPE","Seq");
                     intent.putExtras(extras);
 
                     SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    editor.putString("Practortest", "Practice");
+                    editor.putString("Practortest", "Test");
                     editor.commit();
-
                     startActivity(intent);
                     finish();
                 }

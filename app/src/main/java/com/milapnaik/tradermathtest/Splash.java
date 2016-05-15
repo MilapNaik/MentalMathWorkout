@@ -1,6 +1,5 @@
-package com.milapnaik.mentalmathworkout;
+package com.milapnaik.tradermathtest;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.AnimationUtils;

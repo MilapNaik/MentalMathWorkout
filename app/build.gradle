@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.milapnaik.mentalmathworkout"
+        applicationId "com.milapnaik.tradermathtest"
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 1
