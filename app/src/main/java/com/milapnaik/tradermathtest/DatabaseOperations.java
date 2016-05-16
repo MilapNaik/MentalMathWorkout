@@ -16,7 +16,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     private Context ctx;
     int Questions;
-    String Practortest;
+    Boolean isTest = false;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     public static final int database_version = 1;
@@ -190,9 +190,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         // Find how manny questions from the preferences
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             db.insert(TableInfo.TABLE_EM80, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_EM20, null, cv);
@@ -213,9 +213,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         // Find how manny questions from the preferences
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             db.insert(TableInfo.TABLE_MM80, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_MM20, null, cv);
@@ -236,9 +236,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         // Find how manny questions from the preferences
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             db.insert(TableInfo.TABLE_HM80, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_HM20, null, cv);
@@ -262,9 +262,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         // Find how manny questions from the preferences
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             db.insert(TableInfo.TABLE_ES50, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_ES20, null, cv);
@@ -284,9 +284,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         // Find how manny questions from the preferences
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             db.insert(TableInfo.TABLE_MS50, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_MS20, null, cv);
@@ -306,9 +306,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         // Find how manny questions from the preferences
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             db.insert(TableInfo.TABLE_HS50, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_HS20, null, cv);
@@ -329,9 +329,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor c = db.query(TableInfo.TABLE_EM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             c = db.query(TableInfo.TABLE_EM80, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_EM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -351,9 +351,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor c = db.query(TableInfo.TABLE_MM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             c = db.query(TableInfo.TABLE_MM80, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_MM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -372,9 +372,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor c = db.query(TableInfo.TABLE_HM5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             c = db.query(TableInfo.TABLE_HM80, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_HM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -396,9 +396,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor c = db.query(TableInfo.TABLE_ES5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             c = db.query(TableInfo.TABLE_ES50, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_ES20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -417,9 +417,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor c = db.query(TableInfo.TABLE_MS5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             c = db.query(TableInfo.TABLE_MS50, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_MS20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -438,9 +438,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor c = db.query(TableInfo.TABLE_HS5, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         sharedpreferences = ctx.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
-        Practortest = sharedpreferences.getString("Practortest", "Practice");
+        isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (Practortest.equals("Test"))
+        if (isTest==true)
             c = db.query(TableInfo.TABLE_HS50, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_HS20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");

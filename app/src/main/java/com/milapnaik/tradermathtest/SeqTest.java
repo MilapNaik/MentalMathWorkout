@@ -279,6 +279,7 @@ public class SeqTest extends AppCompatActivity {
                     SharedPreferences.Editor editor = preference.edit();
                     editor.putBoolean("Test", true);
                     editor.commit();
+
                     startActivity(intent);
                     finish();
                 }

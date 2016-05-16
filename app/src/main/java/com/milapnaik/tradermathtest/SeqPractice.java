@@ -279,7 +279,7 @@ public class SeqPractice extends AppCompatActivity {
 
                     SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    editor.putString("Practortest", "Practice");
+                    editor.putBoolean("Test", false);
                     editor.commit();
 
                     startActivity(intent);

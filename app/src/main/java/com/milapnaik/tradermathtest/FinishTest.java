@@ -70,11 +70,6 @@ public class FinishTest extends AppCompatActivity{
             }
         }
 
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putBoolean("Test", false);
-        editor.commit();
-
-
 
         TextView leaderboard = (TextView) findViewById(R.id.leaderboard);
         leaderboard.setTextColor(Color.BLACK);
