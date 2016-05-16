@@ -40,16 +40,6 @@
         </activity>
 
         <activity
-            android:name="com.milapnaik.tradermathtest.Leaderboard"
-            android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.milapnaik.tradermathtest.MainActivity" />
-        </activity>
-
-        <activity
             android:name="com.milapnaik.tradermathtest.Settings"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"

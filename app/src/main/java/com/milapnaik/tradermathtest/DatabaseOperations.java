@@ -201,8 +201,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         else
             db.insert(TableInfo.TABLE_EM5, null, cv);
 
-
-        //Log.d("Database Operations", "One row inserted");
     }
     public void addmmLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
@@ -226,7 +224,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         else
             db.insert(TableInfo.TABLE_MM5, null, cv);
 
-        //Log.d("Database Operations", "One row inserted");
     }
     public void addhmLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
@@ -249,9 +246,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             db.insert(TableInfo.TABLE_HM10, null, cv);
         else
             db.insert(TableInfo.TABLE_HM5, null, cv);
-
-
-        //Log.d("Database Operations", "One row inserted");
     }
 
 
@@ -278,8 +272,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             db.insert(TableInfo.TABLE_ES10, null, cv);
         else
             db.insert(TableInfo.TABLE_ES5, null, cv);
-
-        //Log.d("Database Operations", "One row inserted");
     }
     public void addmsLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
@@ -302,8 +294,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             db.insert(TableInfo.TABLE_MS10, null, cv);
         else
             db.insert(TableInfo.TABLE_MS5, null, cv);
-
-        //Log.d("Database Operations", "One row inserted");
     }
     public void addhsLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
@@ -326,8 +316,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             db.insert(TableInfo.TABLE_HS10, null, cv);
         else
             db.insert(TableInfo.TABLE_HS5, null, cv);
-
-        //Log.d("Database Operations", "One row inserted");
     }
 
 
