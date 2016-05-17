@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.milapnaik.tradermathtest">
+    package="com.milapnaik.tradermathtest"
+    android:versionCode="2"
+    android:versionName="1.1">
 
     <application
         android:allowBackup="true"
@@ -52,7 +54,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.CountDown"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
@@ -61,7 +64,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.PracticeOrTest"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
@@ -70,7 +74,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.MathTest"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
@@ -79,7 +84,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.MathPractice"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
@@ -88,7 +94,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.SeqTest"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
@@ -97,7 +104,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.SeqPractice"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
@@ -107,7 +115,8 @@
         <activity
             android:name="com.milapnaik.tradermathtest.FinishTest"
             android:parentActivityName="com.milapnaik.tradermathtest.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milapnaik.tradermathtest.MainActivity" />
