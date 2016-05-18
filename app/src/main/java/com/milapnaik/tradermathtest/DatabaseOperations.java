@@ -21,6 +21,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     SharedPreferences sharedpreferences;
     public static final int database_version = 1;
 
+    // Create Easy Math tables for 5 questions, 10 questions, 20 questions, and 80 questions
     public String CREATE_EMQUERY5 = "CREATE TABLE " + TableInfo.TABLE_EM5 + "("
             + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
             " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
@@ -60,6 +61,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
             " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
 
+    // Create Easy Sequence tables for 5 questions, 10 questions, 20 questions, and 50 questions
     public String CREATE_ESQUERY5 = "CREATE TABLE " + TableInfo.TABLE_ES5 + "("
             + TableInfo.LB_RANK + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1 ," + TableInfo.LB_SCORE +
             " INT,"+ TableInfo.LB_TIME + " VARCHAR );";
@@ -178,6 +180,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         onCreate(sdb);
     }
 
+    // When called, will add a score to a leaderboard for Easy Math database for 5, 10, 20, or 80 questions
     public void addemLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
@@ -250,7 +253,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
 
 
-
+    // When called, will add a score to a leaderboard for Easy Sequence database for 5, 10, 20, or 80 questions
     public void addesLeaderboard(Context context, SQLiteDatabase db,String rank, int score, String time){
 
         ContentValues cv = new ContentValues();
@@ -452,6 +455,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     }
 
+    // Optional method I decided not to use. Would delete all records for a given
+    // table except the top 5 scores. Possible to use after addesLeaderboard method
+    // or similar methods after adding a score.
     public void DeletePast5 (SQLiteDatabase db, String table){
         // Not currently in use, DeletePast5(db, TableInfo.TABLE_EM5); when needed
 

@@ -39,6 +39,7 @@ public class CountDown extends AppCompatActivity{
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
 
 
+        // Display difficulty, practice/test, # of questions, and countdown
         timer = (TextView) findViewById(R.id.timer);
         test = (TextView) findViewById(R.id.test);
         questions = (TextView) findViewById(R.id.questions);
@@ -79,6 +80,7 @@ public class CountDown extends AppCompatActivity{
 
 
 
+        //Count down timer 3, 2, 1
         countDownTimer = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

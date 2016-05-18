@@ -19,6 +19,7 @@ public class TableData {
 
         public static final String DATABASE_NAME = "HIGH_SCORES";
 
+        // Create all tables
         public static final String TABLE_EM5 = "EASY_MATH5";
         public static final String TABLE_EM10 = "EASY_MATH10";
         public static final String TABLE_EM20 = "EASY_MATH20";

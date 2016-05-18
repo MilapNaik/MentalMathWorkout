@@ -34,7 +34,8 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
         String method = params[0];
         DatabaseOperations dbops = new DatabaseOperations(ctx);
 
-        if (method.equals("add_eminfo")){ //Add Easy Math information
+        // Add score to Easy Math database
+        if (method.equals("add_eminfo")){
             String rank = params[1];
             String score = params[2];
             String time = params[3];
@@ -106,6 +107,8 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             return "High Score added";
 
         }
+
+        // Get Easy Math database
         else if (method.equals("get_eminfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
 
@@ -184,6 +187,7 @@ public class BackgroundTask extends AsyncTask<String, LB,String>{
             db.close();
             return "get_info";
         }
+        // Get Easy Sequence database
         else if (method.equals("get_esinfo")){
             listView = (ListView) activity.findViewById(R.id.display_listview);
 

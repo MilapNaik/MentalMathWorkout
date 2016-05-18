@@ -43,7 +43,8 @@ public class FinishTest extends AppCompatActivity{
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
 
-
+        // Find out if this was a test or practice
+        // (practice has 5,10 or 20 questions; test has either 50 or 80)
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         isTest = sharedpreferences.getBoolean("Test", false);
 
@@ -89,7 +90,7 @@ public class FinishTest extends AppCompatActivity{
 
 
 
-        // Add to specific leaderboard
+        // Add new score to certain leaderboard
         if (test_type.equals("Seq")){
 
             if (Difficulty.equals("Hard")) {
@@ -118,7 +119,7 @@ public class FinishTest extends AppCompatActivity{
         }
 
 
-        // Show top 5 scores
+        // Show top 5 scores of specified leaderboard
         if (test_type.equals("Seq")) {
             if (Difficulty.equals("Hard")) {
                 BackgroundTask backgroundTask = new BackgroundTask(ctx);

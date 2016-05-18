@@ -52,6 +52,7 @@ public class SeqTest extends AppCompatActivity {
         mathAnswer.setTextSize(22);
         mathAnswer.setTextColor(Color.WHITE);
 
+        // Get the question amount and difficulty
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
@@ -84,13 +85,16 @@ public class SeqTest extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Shuffle array
         ShuffleArray(mathTest);
         i = 0;
 
+        // Set first problem, problem number, and start time for timer
         mathProblem.setText(mathTest[i].problem);
         qCount.setText(qcount + "/" + n);
         mStartTime = System.currentTimeMillis();
 
+        // Set up keypad
         Button n1Button = (Button) findViewById(R.id.n1);
         n1Button.setOnClickListener(new View.OnClickListener() {
 
@@ -222,7 +226,8 @@ public class SeqTest extends AppCompatActivity {
 
         });
 
-
+        // When enter is pressed, check if answer is correct and bring in
+        // new question
         Button enterButton = (Button) findViewById(R.id.enterButton);
         enterButton.setOnClickListener(new View.OnClickListener() {
 
@@ -256,6 +261,8 @@ public class SeqTest extends AppCompatActivity {
                 }
 
 
+                // If question number reaches set question amount, end test and
+                // Calculate total time and number of questions correct and finish test
                 if (i >= n) {
                     mEndTime = System.currentTimeMillis();
                     mTotalTime = mEndTime - mStartTime;

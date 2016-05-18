@@ -13,6 +13,8 @@ import android.widget.TextView;
 /**
  * Created by MilapNaik on 5/10/16.
  */
+
+// Class for showing all records together of leaderboard
 public class LB_Adapter extends ArrayAdapter<LB> {
     List<LB> list = new ArrayList<>();
 

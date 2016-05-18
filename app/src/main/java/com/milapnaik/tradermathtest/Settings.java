@@ -41,9 +41,11 @@ public class Settings extends AppCompatActivity {
         q10 = (Button) findViewById(R.id.q10);
         q20 = (Button) findViewById(R.id.q20);
 
+        // Check what difficulty was previously pressed
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
+        // Re-press that button
         if( Difficulty.equals("Hard")) {
             hard.setChecked(true);
             medium.setChecked(false);
@@ -61,6 +63,7 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+    // When a new radio button is pressed
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -94,6 +97,7 @@ public class Settings extends AppCompatActivity {
                 }
         }
 
+        // Toast which difficulty was pressed
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
@@ -102,6 +106,7 @@ public class Settings extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
+    // When 5 question amount is pressed, set preferences to new amount and toast
     public void set5questions(View view) {
         SharedPreferences preference = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Editor editor = preference.edit();
