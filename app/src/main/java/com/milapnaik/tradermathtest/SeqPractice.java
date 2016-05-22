@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class SeqPractice extends AppCompatActivity {
 
     Question[] mathTest = new Question[50];
     long mStartTime, mEndTime, mTotalTime;
-    String answer;
+    String answer = "";
     String Difficulty;
     int qcount = 1;
     public static final String MyPREFERENCES = "MyPrefs" ;
@@ -237,10 +238,14 @@ public class SeqPractice extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                answer = mathAnswer.getText().toString();
+                double answer2double= Double.NaN;
+                if (!answer.equals(""))
+                    answer2double = Double.parseDouble(answer);
                 String correctAnswer = mathTest[i].answer;
+                double correctAnswer2double = Double.parseDouble(correctAnswer);
 
-                if (answer.equals(correctAnswer)) {
+                //if answer is correct or correct answer begins with 0, leaving out 0 is acceptable
+                if (answer2double == correctAnswer2double) {
                     correctcount++;
                     mathAnswer.setText("");
 
@@ -309,6 +314,18 @@ public class SeqPractice extends AppCompatActivity {
             array[i] = temp;
         }
     }
+
+    // Kill activity if back button pressed
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 
 
 }

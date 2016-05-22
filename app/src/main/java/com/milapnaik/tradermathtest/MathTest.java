@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.graphics.Color;
@@ -26,7 +27,7 @@ public class MathTest extends AppCompatActivity {
 
     Question[] mathTest = new Question[80];
     long mStartTime, mEndTime, mTotalTime;
-    String answer;
+    String answer = "";
     String Difficulty;
     int qcount = 1;
     final int n = 80;
@@ -240,9 +241,14 @@ public class MathTest extends AppCompatActivity {
 
 
                 answer = mathAnswer.getText().toString();
+                double answer2double= Double.NaN;
+                if (!answer.equals(""))
+                    answer2double = Double.parseDouble(answer);
                 String correctAnswer = mathTest[i].answer;
+                double correctAnswer2double = Double.parseDouble(correctAnswer);
 
-                if (answer.equals(correctAnswer)) {
+                //if answer is correct or correct answer begins with 0, leaving out 0 is acceptable
+                if (answer2double == correctAnswer2double) {
                     correctcount++;
                     mathAnswer.setText("");
 
@@ -252,7 +258,7 @@ public class MathTest extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(MathTest.this,
-                            correctAnswer,
+                            "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
                     mathAnswer.setText("");
 
@@ -313,6 +319,18 @@ public class MathTest extends AppCompatActivity {
             array[i] = temp;
         }
     }
+
+    // Kill activity if back button pressed
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 
 
 }
