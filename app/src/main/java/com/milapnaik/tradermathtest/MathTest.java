@@ -24,10 +24,11 @@ public class MathTest extends AppCompatActivity {
 
     int i = 0;
     int correctcount = 0;
+    StringBuilder questionCount = new StringBuilder();
+    StringBuilder answer = new StringBuilder();
 
     Question[] mathTest = new Question[80];
     long mStartTime, mEndTime, mTotalTime;
-    String answer = "";
     String Difficulty;
     int qcount = 1;
     final int n = 80;
@@ -62,15 +63,17 @@ public class MathTest extends AppCompatActivity {
         //Try to read the problem and answers text file
         try {
 
-            InputStream is; // = this.getResources().openRawResource(R.raw.easymath);
-            if( Difficulty.equals("Hard")) {
-                is = this.getResources().openRawResource(R.raw.hardmath);
-            }
-            else if ( Difficulty.equals("Medium")) {
-                is = this.getResources().openRawResource(R.raw.mediummath);
-            }
-            else {
-                is = this.getResources().openRawResource(R.raw.easymath);
+            InputStream is;
+            switch (Difficulty) {
+                case "Hard":
+                    is = this.getResources().openRawResource(R.raw.hardmath);
+                    break;
+                case "Medium":
+                    is = this.getResources().openRawResource(R.raw.mediummath);
+                    break;
+                default:
+                    is = this.getResources().openRawResource(R.raw.easymath);
+                    break;
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -96,7 +99,10 @@ public class MathTest extends AppCompatActivity {
 
         // Set first problem, problem number, and start time for timer
         mathProblem.setText(mathTest[i].problem);
-        qCount.setText(i+1 + "/" + n);
+        questionCount.append(i+1);
+        questionCount.append("/");
+        questionCount.append(n);
+        qCount.setText(questionCount);
         mStartTime = System.currentTimeMillis();
 
         // Set up keypad
@@ -105,8 +111,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "1");
+                answer.append(1);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -115,8 +121,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "2");
+                answer.append(2);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -125,8 +131,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "3");
+                answer.append(3);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -135,8 +141,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "4");
+                answer.append(4);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -145,8 +151,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "5");
+                answer.append(5);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -155,8 +161,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "6");
+                answer.append(6);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -165,8 +171,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "7");
+                answer.append(7);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -175,18 +181,17 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "8");
+                answer.append(8);
+                mathAnswer.setText(answer);
             }
-
         });
         Button n9Button = (Button) findViewById(R.id.n9);
         n9Button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "9");
+                answer.append(9);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -195,8 +200,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "0");
+                answer.append(0);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -205,8 +210,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + "-");
+                answer.append("-");
+                mathAnswer.setText(answer);
             }
 
         });
@@ -215,8 +220,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText(answer + ".");
+                answer.append(".");
+                mathAnswer.setText(answer);
             }
 
         });
@@ -225,8 +230,8 @@ public class MathTest extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                answer = mathAnswer.getText().toString();
-                mathAnswer.setText("");
+                answer.setLength(0);
+                mathAnswer.setText(answer);
             }
 
         });
@@ -239,11 +244,9 @@ public class MathTest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                answer = mathAnswer.getText().toString();
                 double answer2double= Double.NaN;
-                if (!answer.equals(""))
-                    answer2double = Double.parseDouble(answer);
+                if (answer.length() != 0)
+                    answer2double = Double.parseDouble(answer.toString());
                 String correctAnswer = mathTest[i].answer;
                 double correctAnswer2double = Double.parseDouble(correctAnswer);
 
@@ -268,7 +271,11 @@ public class MathTest extends AppCompatActivity {
                 /*Check question number, if test is done then move onto next screen*/
                 if (i < n) {
                     qcount++;
-                    qCount.setText(qcount + "/" + n);
+                    questionCount.setLength(0);
+                    questionCount.append(qcount);
+                    questionCount.append("/");
+                    questionCount.append(n);
+                    qCount.setText(questionCount);
                     mathProblem.setText(mathTest[i].problem);
                 }
 
@@ -281,8 +288,8 @@ public class MathTest extends AppCompatActivity {
                     int minutes = seconds / 60;
                     seconds = seconds % 60;
                     int millis = (int) mTotalTime % 1000;
-                    String sectime = Integer.toString(seconds);
-                    String milsectime = Integer.toString(millis);
+                    //String sectime = Integer.toString(seconds);
+                    //String milsectime = Integer.toString(millis);
                     String time = String.format("%02d:%02d.%03d", minutes, seconds, millis);
                     Intent intent = new Intent(MathTest.this, FinishTest.class);
                     String count = Integer.toString(correctcount);
