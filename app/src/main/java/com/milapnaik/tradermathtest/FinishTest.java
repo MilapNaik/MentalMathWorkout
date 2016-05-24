@@ -22,6 +22,9 @@ public class FinishTest extends AppCompatActivity{
     String Difficulty;
     int Questions;
     Boolean isTest;
+    StringBuilder typeoftestdisplay = new StringBuilder();
+    StringBuilder correctdisplay = new StringBuilder();
+    StringBuilder timedisplay = new StringBuilder();
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
 
@@ -38,21 +41,20 @@ public class FinishTest extends AppCompatActivity{
         timed = extras.getString("TIMER");
         test_type = extras.getString("TEST_TYPE"); //Math or Seq
 
-        // Find what difficulty from the preferences
+        // Find what difficulty and # of questions from the preferences
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
 
         // Find out if this was a test or practice
         // (practice has 5,10 or 20 questions; test has either 50 or 80)
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         isTest = sharedpreferences.getBoolean("Test", false);
 
         TextView test = (TextView) findViewById(R.id.test);
         test.setTextColor(Color.BLACK);
         test.setTextSize(32);
 
-        if (isTest == true){
+        if (isTest){
             if (test_type.equals("Seq")) {
                 Questions = 50;
                 test.setText("Sequence Test");
@@ -75,17 +77,25 @@ public class FinishTest extends AppCompatActivity{
         TextView leaderboard = (TextView) findViewById(R.id.leaderboard);
         leaderboard.setTextColor(Color.BLACK);
         leaderboard.setTextSize(28);
-        leaderboard.setText(Questions + " " + Difficulty + " Questions");
+        typeoftestdisplay.append(Questions);
+        typeoftestdisplay.append(" ");
+        typeoftestdisplay.append(Difficulty);
+        typeoftestdisplay.append(" Questions");
+        leaderboard.setText(typeoftestdisplay);
 
         TextView numcorrect = (TextView) findViewById(R.id.correct_count);
         numcorrect.setTextColor(Color.WHITE);
         numcorrect.setTextSize(25);
-        numcorrect.setText("Correct answers: " + correct);
+        correctdisplay.append("Correct answers: ");
+        correctdisplay.append(correct);
+        numcorrect.setText(correctdisplay);
 
         TextView time = (TextView) findViewById(R.id.time);
         time.setTextColor(Color.WHITE);
         time.setTextSize(25);
-        time.setText("Time: " + timed);
+        timedisplay.append("Time: ");
+        timedisplay.append(timed);
+        time.setText(timedisplay);
 
 
 
@@ -93,55 +103,83 @@ public class FinishTest extends AppCompatActivity{
         // Add new score to certain leaderboard
         if (test_type.equals("Seq")){
 
-            if (Difficulty.equals("Hard")) {
-                BackgroundTask backgroundTask = new BackgroundTask(this);
-                backgroundTask.execute("add_hsinfo", rank, correct, timed);
-            } else if (Difficulty.equals("Medium")) {
-                BackgroundTask backgroundTask = new BackgroundTask(this);
-                backgroundTask.execute("add_msinfo", rank, correct, timed);
-            } else {
-                BackgroundTask backgroundTask = new BackgroundTask(this);
-                backgroundTask.execute("add_esinfo", rank, correct, timed);
+            switch (Difficulty) {
+                case "Hard": {
+                    BackgroundTask backgroundTask = new BackgroundTask(this);
+                    backgroundTask.execute("add_hsinfo", rank, correct, timed);
+                    break;
+                }
+                case "Medium": {
+                    BackgroundTask backgroundTask = new BackgroundTask(this);
+                    backgroundTask.execute("add_msinfo", rank, correct, timed);
+                    break;
+                }
+                default: {
+                    BackgroundTask backgroundTask = new BackgroundTask(this);
+                    backgroundTask.execute("add_esinfo", rank, correct, timed);
+                    break;
+                }
             }
 
         }
         else {
-            if (Difficulty.equals("Hard")) {
-                BackgroundTask backgroundTask = new BackgroundTask(this);
-                backgroundTask.execute("add_hminfo", rank, correct, timed);
-            } else if (Difficulty.equals("Medium")) {
-                BackgroundTask backgroundTask = new BackgroundTask(this);
-                backgroundTask.execute("add_mminfo", rank, correct, timed);
-            } else {
-                BackgroundTask backgroundTask = new BackgroundTask(this);
-                backgroundTask.execute("add_eminfo", rank, correct, timed);
+            switch (Difficulty) {
+                case "Hard": {
+                    BackgroundTask backgroundTask = new BackgroundTask(this);
+                    backgroundTask.execute("add_hminfo", rank, correct, timed);
+                    break;
+                }
+                case "Medium": {
+                    BackgroundTask backgroundTask = new BackgroundTask(this);
+                    backgroundTask.execute("add_mminfo", rank, correct, timed);
+                    break;
+                }
+                default: {
+                    BackgroundTask backgroundTask = new BackgroundTask(this);
+                    backgroundTask.execute("add_eminfo", rank, correct, timed);
+                    break;
+                }
             }
         }
 
 
         // Show top 5 scores of specified leaderboard
         if (test_type.equals("Seq")) {
-            if (Difficulty.equals("Hard")) {
-                BackgroundTask backgroundTask = new BackgroundTask(ctx);
-                backgroundTask.execute("get_hsinfo");
-            } else if (Difficulty.equals("Medium")) {
-                BackgroundTask backgroundTask = new BackgroundTask(ctx);
-                backgroundTask.execute("get_msinfo");
-            } else {
-                BackgroundTask backgroundTask = new BackgroundTask(ctx);
-                backgroundTask.execute("get_esinfo");
+            switch (Difficulty) {
+                case "Hard": {
+                    BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                    backgroundTask.execute("get_hsinfo");
+                    break;
+                }
+                case "Medium": {
+                    BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                    backgroundTask.execute("get_msinfo");
+                    break;
+                }
+                default: {
+                    BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                    backgroundTask.execute("get_esinfo");
+                    break;
+                }
             }
         }
         else {
-            if (Difficulty.equals("Hard")) {
-                BackgroundTask backgroundTask = new BackgroundTask(ctx);
-                backgroundTask.execute("get_hminfo");
-            } else if (Difficulty.equals("Medium")) {
-                BackgroundTask backgroundTask = new BackgroundTask(ctx);
-                backgroundTask.execute("get_mminfo");
-            } else {
-                BackgroundTask backgroundTask = new BackgroundTask(ctx);
-                backgroundTask.execute("get_eminfo");
+            switch (Difficulty) {
+                case "Hard": {
+                    BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                    backgroundTask.execute("get_hminfo");
+                    break;
+                }
+                case "Medium": {
+                    BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                    backgroundTask.execute("get_mminfo");
+                    break;
+                }
+                default: {
+                    BackgroundTask backgroundTask = new BackgroundTask(ctx);
+                    backgroundTask.execute("get_eminfo");
+                    break;
+                }
             }
 
         }

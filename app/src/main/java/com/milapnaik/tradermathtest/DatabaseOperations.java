@@ -195,7 +195,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             db.insert(TableInfo.TABLE_EM80, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_EM20, null, cv);
@@ -218,7 +218,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             db.insert(TableInfo.TABLE_MM80, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_MM20, null, cv);
@@ -241,7 +241,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             db.insert(TableInfo.TABLE_HM80, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_HM20, null, cv);
@@ -267,7 +267,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             db.insert(TableInfo.TABLE_ES50, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_ES20, null, cv);
@@ -289,7 +289,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             db.insert(TableInfo.TABLE_MS50, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_MS20, null, cv);
@@ -311,7 +311,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             db.insert(TableInfo.TABLE_HS50, null, cv);
         else if (Questions == 20)
             db.insert(TableInfo.TABLE_HS20, null, cv);
@@ -334,7 +334,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             c = db.query(TableInfo.TABLE_EM80, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_EM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -356,7 +356,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             c = db.query(TableInfo.TABLE_MM80, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_MM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -377,7 +377,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             c = db.query(TableInfo.TABLE_HM80, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_HM20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -401,7 +401,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             c = db.query(TableInfo.TABLE_ES50, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_ES20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -422,7 +422,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             c = db.query(TableInfo.TABLE_MS50, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_MS20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
@@ -443,7 +443,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Questions = sharedpreferences.getInt("NUM_QUESTIONS", 5);
         isTest = sharedpreferences.getBoolean("Test", false);
 
-        if (isTest==true)
+        if (isTest)
             c = db.query(TableInfo.TABLE_HS50, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");
         else if (Questions == 20)
             c = db.query(TableInfo.TABLE_HS20, null, null, null, null, null, TableInfo.LB_SCORE + " DESC, " + TableInfo.LB_TIME + " ASC", "5");

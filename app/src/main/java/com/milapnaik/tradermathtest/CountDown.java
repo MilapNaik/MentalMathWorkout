@@ -22,6 +22,8 @@ public class CountDown extends AppCompatActivity{
     String Difficulty;
     int Questions;
 
+    StringBuilder testdifficultydisplay = new StringBuilder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,23 +59,36 @@ public class CountDown extends AppCompatActivity{
         if (mathorseq.equals("Seqtest")) {
             if(testorpractice.equals("Test")) {
                 test.setText("Sequence Test");
-                questions.setText("50 " + Difficulty + " Questions");
-
+                testdifficultydisplay.append("50 ");
+                testdifficultydisplay.append(Difficulty);
+                testdifficultydisplay.append(" Questions");
+                questions.setText(testdifficultydisplay);
             }
             else {
                 test.setText("Sequence Practice");
-                questions.setText(Questions + " " + Difficulty + " Questions");
+                testdifficultydisplay.append(Questions);
+                testdifficultydisplay.append(" ");
+                testdifficultydisplay.append(Difficulty);
+                testdifficultydisplay.append(" Questions");
+                questions.setText(testdifficultydisplay);
             }
         }
         else{
             if(testorpractice.equals("Test")) {
                 test.setText("Math Test");
-                questions.setText("80 " + Difficulty + " Questions");
+                testdifficultydisplay.append("80 ");
+                testdifficultydisplay.append(Difficulty);
+                testdifficultydisplay.append(" Questions");
+                questions.setText(testdifficultydisplay);
 
             }
             else {
                 test.setText("Math Practice");
-                questions.setText(Questions + " " + Difficulty + " Questions");
+                testdifficultydisplay.append(Questions);
+                testdifficultydisplay.append(" ");
+                testdifficultydisplay.append(Difficulty);
+                testdifficultydisplay.append(" Questions");
+                questions.setText(testdifficultydisplay);
             }
 
         }
@@ -89,35 +104,36 @@ public class CountDown extends AppCompatActivity{
 
             @Override
             public void onFinish() {
-                if (mathorseq.equals("Seqtest")) {
-                    if(testorpractice.equals("Test")) {
-                        Intent intent = new Intent(CountDown.this, SeqTest.class);
-                        startActivity(intent); //Start Sequence test
-                        finish();
-                    }
-                    else{
-                        Intent intent = new Intent(CountDown.this, SeqPractice.class);
-                        startActivity(intent); //Start Sequence practice
-                        finish();
-                    }
+                switch (mathorseq) {
+                    case "Seqtest":
+                        if (testorpractice.equals("Test")) {
+                            Intent intent = new Intent(CountDown.this, SeqTest.class);
+                            startActivity(intent); //Start Sequence test
+                            finish();
+                        } else {
+                            Intent intent = new Intent(CountDown.this, SeqPractice.class);
+                            startActivity(intent); //Start Sequence practice
+                            finish();
+                        }
 
-                }
-                else if (mathorseq.equals("Mathtest")) {
-                    if(testorpractice.equals("Test")) {
-                        Intent intent = new Intent(CountDown.this, MathTest.class);
-                        startActivity(intent); //Start Math test
-                        finish();
-                    }
-                    else{
-                        Intent intent = new Intent(CountDown.this, MathPractice.class);
-                        startActivity(intent); //Start Math practice
-                        finish();
+                        break;
+                    case "Mathtest":
+                        if (testorpractice.equals("Test")) {
+                            Intent intent = new Intent(CountDown.this, MathTest.class);
+                            startActivity(intent); //Start Math test
+                            finish();
+                        } else {
+                            Intent intent = new Intent(CountDown.this, MathPractice.class);
+                            startActivity(intent); //Start Math practice
+                            finish();
 
-                    }
-                }
-                else{
-                    Intent intent = new Intent(CountDown.this, MainActivity.class);
-                    startActivity(intent); //Go back to main activity
+                        }
+                        break;
+                    default:
+                        Intent intent = new Intent(CountDown.this, MainActivity.class);
+                        startActivity(intent); //Go back to main activity
+
+                        break;
                 }
                 //timer.setText("GO");
             }

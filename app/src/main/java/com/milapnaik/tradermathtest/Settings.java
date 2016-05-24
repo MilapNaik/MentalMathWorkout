@@ -118,7 +118,7 @@ public class Settings extends AppCompatActivity {
 
         Toast.makeText(Settings.this,
                 "Set to " + n + " questions",
-                Toast.LENGTH_SHORT).show();;
+                Toast.LENGTH_SHORT).show();
     }
 
     public void set10questions(View view) {
