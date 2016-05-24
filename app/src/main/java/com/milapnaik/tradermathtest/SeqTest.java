@@ -27,7 +27,7 @@ public class SeqTest extends AppCompatActivity {
     StringBuilder questionCount = new StringBuilder();
     StringBuilder answer = new StringBuilder();
 
-    Question[] mathTest = new Question[80];
+    Question[] mathTest = new Question[50];
     long mStartTime, mEndTime, mTotalTime;
     String Difficulty;
     int qcount = 1;
