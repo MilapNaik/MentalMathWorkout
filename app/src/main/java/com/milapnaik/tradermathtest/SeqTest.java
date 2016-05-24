@@ -253,17 +253,20 @@ public class SeqTest extends AppCompatActivity {
                 //if answer is correct or correct answer begins with 0, leaving out 0 is acceptable
                 if (answer2double == correctAnswer2double) {
                     correctcount++;
-                    mathAnswer.setText("");
+                    answer.setLength(0);
+                    mathAnswer.setText(answer);
 
                     Toast.makeText(SeqTest.this,
                             R.string.correct_toast,
                             Toast.LENGTH_SHORT).show();
 
                 } else {
+                    answer.setLength(0);
+                    mathAnswer.setText(answer);
+
                     Toast.makeText(SeqTest.this,
                             "Correct Answer: " + correctAnswer,
                             Toast.LENGTH_SHORT).show();
-                    mathAnswer.setText("");
                 }
                 i++;
 
