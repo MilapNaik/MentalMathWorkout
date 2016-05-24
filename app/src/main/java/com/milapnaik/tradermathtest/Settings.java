@@ -46,20 +46,22 @@ public class Settings extends AppCompatActivity {
         Difficulty = sharedpreferences.getString("PREF_DIFFICULTY", "Easy");
 
         // Re-press that button
-        if( Difficulty.equals("Hard")) {
-            hard.setChecked(true);
-            medium.setChecked(false);
-            easy.setChecked(false);
-        }
-        else if( Difficulty.equals("Medium")) {
-            medium.setChecked(true);
-            hard.setChecked(false);
-            easy.setChecked(false);
-        }
-        else {
-            easy.setChecked(true);
-            medium.setChecked(false);
-            hard.setChecked(false);
+        switch (Difficulty) {
+            case "Hard":
+                hard.setChecked(true);
+                medium.setChecked(false);
+                easy.setChecked(false);
+                break;
+            case "Medium":
+                medium.setChecked(true);
+                hard.setChecked(false);
+                easy.setChecked(false);
+                break;
+            default:
+                easy.setChecked(true);
+                medium.setChecked(false);
+                hard.setChecked(false);
+                break;
         }
     }
 
