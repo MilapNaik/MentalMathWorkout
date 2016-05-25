@@ -27,6 +27,8 @@ public class MathPractice extends AppCompatActivity {
     StringBuilder questionCount = new StringBuilder();
     StringBuilder answer = new StringBuilder();
 
+    int index;
+    Random random = new Random();
     Question[] mathTest = new Question[80];
     long mStartTime, mEndTime, mTotalTime;
     String Difficulty;
@@ -94,11 +96,12 @@ public class MathPractice extends AppCompatActivity {
             e.printStackTrace();
         }
         // Shuffle array
-        ShuffleArray(mathTest);
+        //ShuffleArray(mathTest);
         i = 0;
-
+        // Random number
+        index = random.nextInt(mathTest.length);
         // Set first problem, problem number, and start time for timer
-        mathProblem.setText(mathTest[i].problem);
+        mathProblem.setText(mathTest[index].problem);
         questionCount.append(i+1);
         questionCount.append("/");
         questionCount.append(n);
@@ -250,7 +253,8 @@ public class MathPractice extends AppCompatActivity {
                 double answer2double= Double.NaN;
                 if (answer.length() != 0)
                     answer2double = Double.parseDouble(answer.toString());
-                String correctAnswer = mathTest[i].answer;
+
+                String correctAnswer = mathTest[index].answer;
                 double correctAnswer2double = Double.parseDouble(correctAnswer);
 
                 //if answer is correct or correct answer begins with 0, leaving out 0 is acceptable
@@ -280,7 +284,10 @@ public class MathPractice extends AppCompatActivity {
                     questionCount.append("/");
                     questionCount.append(n);
                     qCount.setText(questionCount);
-                    mathProblem.setText(mathTest[i].problem);
+
+                    //TODO check if new random integer process works
+                    index = random.nextInt(mathTest.length);
+                    mathProblem.setText(mathTest[index].problem);
                 }
 
 
