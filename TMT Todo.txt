@@ -1,1 +1,1 @@
-Trader Math Test To-Do:- Global high scores bored- ".063" should also be correct for "0.063" CHECK- Backspace button- Add more questions...too easily memorizable- Change keypad GUI- Make code cleaner...use StringBuilder, switch case, get rid ofunused code, etc.
+Trader Math Test To-Do:- Global high scores boredCHECK - ".063" should also be correct for "0.063"- Backspace button- Add more questions...too easily memorizable- Change keypad GUI- Make code cleaner...use StringBuilder, switch case, get rid ofunused code, etc.CHECK - Add ads- Finish analytic calls

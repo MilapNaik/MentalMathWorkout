@@ -9,6 +9,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.graphics.Color;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
 /**
@@ -28,12 +30,21 @@ public class FinishTest extends AppCompatActivity{
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
 
+    //Ad code
+    private static final String TAG = "MainActivity";
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finishtest);
         Intent intent = getIntent();
         Context ctx = this;
+
+        // Ad
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         // Find correct answers, amount of time, and test type
         Bundle extras = intent.getExtras();

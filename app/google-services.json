@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "616013665531",
+    "firebase_url": "https://trader-math-test-ios.firebaseio.com",
+    "project_id": "trader-math-test-ios",
+    "storage_bucket": "trader-math-test-ios.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616013665531:android:57c3b61b5567e440",
+        "android_client_info": {
+          "package_name": "com.milapnaik.tradermathtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616013665531-n75srtdjnpieq255r4j2lrnteb0t48q8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.milapnaik.tradermathtest",
+            "certificate_hash": "faa68d0c22cd40269b7d2f24a3138941b321a723"
+          }
+        },
+        {
+          "client_id": "616013665531-79nn9a2rvbt164d2qdkjlsas4pddfj4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXEMkcp9UYVZakrXJAwdPia_0svQDrGM0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616013665531-79nn9a2rvbt164d2qdkjlsas4pddfj4b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "616013665531-j5f01lpragiig3cr759nq69adv55di7a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.milapnaik.TraderMathTest",
+                "app_store_id": "1122059357"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,13 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.milapnaik.mentalmathworkout.MESSAGE";
     public final static String TEST_TYPE = "com.milapnaik.mentalmathworkout.MESSAGE";
     private DatabaseOperations db;
-
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Context ctx = this;
         db = new DatabaseOperations(ctx);
         db.close();
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
     }
 
@@ -55,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
         String test = "Mathtest";
         intent.putExtra(TEST_TYPE, test);
         startActivity(intent);
+
+        // Log analytics event
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, test);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
     public void SeqTest(View view) {
